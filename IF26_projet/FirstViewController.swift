@@ -9,54 +9,46 @@
 import UIKit
 import SQLite
 
-class FirstViewController: UIViewController {
-
-    private var database: Connection!
-    
-    let usersTable = Table("users")
-    let id = Expression<Int>("id")
-    let name = Expression<String>("name")
-    let email = Expression<String>("email")
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet weak var tableView: UITableView!
     
+    var list = DataBase.GetInstance().getTrainingString()
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
     
-    @IBAction func ajouter(_ sender: UIButton) {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = list[indexPath.row]
         
-        print("LOl");
-        
-        let createTable = self.usersTable.create { (table) in
-            table.column(self.id, primaryKey: true)
-            table.column(self.name)
-            table.column(self.email, unique: true)
-        }
-        
-        do {
-            try self.database.run(createTable)
-            print("Created Table")
-        } catch {
-            print(error)
-        }
+        return(cell)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        list = DataBase.GetInstance().getTrainingString()
+        self.tableView.reloadData()
     }
     
     
+    @IBAction func addTraining(_ sender: UIButton) {
+        print("lol1")
+        DataBase.GetInstance().insertEntrainement(vc: self, tableView: self.tableView)
+        print("lo2")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do{
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("data_base").appendingPathExtension("sqlite3")
-            let base = try Connection(fileUrl.path)
-            self.database = base;
-
-        }catch{
-            print(error)
-        }
+        DataBase.GetInstance().listTraining()
+    }
+    
+    func setSelected(_ selected: Bool, animated: Bool) {
+        setSelected(selected, animated: animated)
         
     }
-
-
+    
 }
 
