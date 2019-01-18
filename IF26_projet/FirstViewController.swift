@@ -27,7 +27,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return(cell)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         list = DataBase.GetInstance().getTrainingString()
         self.tableView.reloadData()
@@ -36,7 +36,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func addTraining(_ sender: UIButton) {
         print("lol1")
-        DataBase.GetInstance().insertEntrainement(vc: self, tableView: self.tableView)
+        DataBase.GetInstance().insertEntrainement(vc: self)
         print("lo2")
     }
     

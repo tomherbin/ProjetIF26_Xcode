@@ -78,7 +78,7 @@ class DataBase {
     }
     
     
-    public func insertEntrainement(vc: FirstViewController, tableView: UITableView){
+    public func insertEntrainement(vc: FirstViewController){
     print("Entrée de l'entrainement")
         
         
@@ -96,7 +96,10 @@ class DataBase {
             do {
                 try self.database.run(insertTraining)
                 print("Training inséré !")
-                
+                self.listTraining()
+                vc.tableView.reloadData()
+                vc.viewWillAppear(true)
+                print("lold")
             } catch {
                 print(error)
             }
