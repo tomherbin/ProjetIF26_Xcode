@@ -15,6 +15,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     
     var list = DataBase.GetInstance().getTrainingString()
+    var myIndex = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -27,14 +28,21 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return(cell)
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "Segue", sender: self)
+    }
+    
+    
+    
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         list = DataBase.GetInstance().getTrainingString()
         self.tableView.reloadData()
     }
     
-    
-    @IBAction func addTraining(_ sender: UIButton) {
+    @IBAction func addTraining(_ sender: UIBarButtonItem) {
         print("lol1")
         DataBase.GetInstance().insertEntrainement(vc: self)
         print("lo2")
@@ -45,10 +53,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         DataBase.GetInstance().listTraining()
     }
     
-    func setSelected(_ selected: Bool, animated: Bool) {
-        setSelected(selected, animated: animated)
-        
-    }
     
 }
 

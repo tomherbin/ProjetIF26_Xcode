@@ -19,6 +19,7 @@
 		E22F6FDF21F2059300EA5A70 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FDE21F2059300EA5A70 /* DataBase.swift */; };
 		E22F6FE121F2090600EA5A70 /* Entrainement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FE021F2090600EA5A70 /* Entrainement.swift */; };
 		E22F6FE321F20A8000EA5A70 /* Exercice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FE221F20A8000EA5A70 /* Exercice.swift */; };
+		E22F6FED21F316B400EA5A70 /* ExerciceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FEC21F316B400EA5A70 /* ExerciceTabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		E22F6FDE21F2059300EA5A70 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		E22F6FE021F2090600EA5A70 /* Entrainement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entrainement.swift; sourceTree = "<group>"; };
 		E22F6FE221F20A8000EA5A70 /* Exercice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercice.swift; sourceTree = "<group>"; };
+		E22F6FEC21F316B400EA5A70 /* ExerciceTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceTabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */,
 				E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */,
+				E22F6FEC21F316B400EA5A70 /* ExerciceTabViewController.swift */,
 				E22F6FAE21F1C37C00EA5A70 /* SecondViewController.swift */,
 				E22F6FB021F1C37C00EA5A70 /* Main.storyboard */,
 				E22F6FB321F1C37E00EA5A70 /* Assets.xcassets */,
@@ -314,6 +317,7 @@
 				E22F6FE121F2090600EA5A70 /* Entrainement.swift in Sources */,
 				E22F6FE321F20A8000EA5A70 /* Exercice.swift in Sources */,
 				E22F6FDF21F2059300EA5A70 /* DataBase.swift in Sources */,
+				E22F6FED21F316B400EA5A70 /* ExerciceTabViewController.swift in Sources */,
 				E22F6FAD21F1C37C00EA5A70 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
