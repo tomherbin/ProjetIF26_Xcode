@@ -10,30 +10,23 @@ import UIKit
 import SQLite
 
 
- var list = DataBase.GetInstance().getTrainingExercice()
+
 class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
   
-  
+  private var exerciceArray: [Exercice] = []
     
     @IBOutlet weak var editButton: UIBarButtonItem!
-    // var list = DataBase.GetInstance().getTrainingString()
    // var myIndex = 0
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return exerciceArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ExerciceTabViewControllerTableViewCell
-       /* cell.exerciceImage.image = UIImage[named: animals[indexPath.row] + ".jpg"]*/
-        cell.titleExo.text = list[indexPath.row]
-        cell.desciptionExo.text = list[indexPath.row]
-        
-      //  cell.textExercice
-       // let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell2")
-        //cell.textLabel?.text = list[indexPath.row]
-        
+      cell.titleExo?.text = exerciceArray[indexPath.item].getTitle()
+        cell.descriptionExo?.text = exerciceArray[indexPath.item].getDescription()
         return(cell)
     }
     
@@ -43,9 +36,9 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = list[sourceIndexPath.row]
-        list.remove(at: sourceIndexPath.row)
-        list.insert(item, at: destinationIndexPath.row)
+        let item = exerciceArray[sourceIndexPath.row]
+        exerciceArray.remove(at: sourceIndexPath.row)
+        exerciceArray.insert(item, at: destinationIndexPath.row)
     }
     
     @IBAction func rearrange(_ sender: UIBarButtonItem) {
@@ -63,9 +56,9 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCell.EditingStyle.delete)
         {
-            list.remove(at: indexPath.row)
+            DataBase.GetInstance().deleteExercice(exerciceKey: exerciceArray[indexPath.row].getKey())
+            exerciceArray.remove(at: indexPath.row)
             tableView.reloadData()
-            DataBase.GetInstance().deleteTraining(trainingId: indexPath.row)
         }
     }
     
@@ -81,7 +74,14 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
         DataBase.GetInstance().listTraining()
     }
     
-   
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        exerciceArray = DataBase.GetInstance().getExercice()
+        self.tableView.reloadData()
+        
+        
+      
+    }
 
     
     

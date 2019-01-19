@@ -20,4 +20,12 @@ class Entrainement{
         self.titre = titre
        
     }
+    
+    func getTitle() -> String{
+        return self.titre
+    }
+    
+    func getKey() -> Int{
+        return self.key
+    }
 }

@@ -29,6 +29,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.titreEntrainement.text = list[indexPath.row]
         //  cell.idEntrainement = idList[indexPath.row]
         
+        
         return(cell)
     }
     
@@ -78,7 +79,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        list = DataBase.GetInstance().getTrainingTitle()
+        list = DataBase.GetInstance().getTrainingString()
         self.tableView.reloadData()
     }
     

@@ -18,11 +18,12 @@ class DataBase {
     let trainingTable = Table("entrainement")
     let id = Expression<Int>("id")
     let name = Expression<String>("titre")
-  
+    
     
     let exerciceTable = Table("exercice")
     let idExercice = Expression<Int>("idExo")
     let nameExercice = Expression<String>("titre")
+    let description = Expression<String>("description")
     
     
     static func GetInstance()->DataBase{
@@ -54,12 +55,12 @@ class DataBase {
             table.column(self.id, primaryKey: true)
             table.column(self.name)
             table.column(self.idExercice)
-           
+            
         }
         let createExerciceTable = self.exerciceTable.create { (table) in
             table.column(self.idExercice, primaryKey: true)
             table.column(self.nameExercice)
-            
+            table.column(self.description)
         }
         
         do {
@@ -79,10 +80,10 @@ class DataBase {
     
     
     public func insertEntrainement(vc: FirstViewController){
-
+        
         let alert = UIAlertController(title: "Nouvel entrainement", message: nil, preferredStyle: .alert)
         alert.addTextField { (tf) in tf.placeholder = "titre" }
-      
+        
         let action = UIAlertAction(title: "Valider", style: .default) { (_) in
             guard let name = alert.textFields?.first?.text
                 else { return }
@@ -103,30 +104,31 @@ class DataBase {
         }
         
         let action2 = UIAlertAction(title: "Annuler", style: .default)
-            
+        
         alert.addAction(action2)
-            alert.addAction(action)
-       vc.present(alert, animated: true, completion: nil)
-      
+        alert.addAction(action)
+        vc.present(alert, animated: true, completion: nil)
+        
         
     }
     
     public func insertExercice(vc: ExerciceTabViewController){
-      
+        
         let alert = UIAlertController(title: "Nouvel exercice", message: nil, preferredStyle: .alert)
         alert.addTextField { (tf) in tf.placeholder = "titre" }
+        alert.addTextField { (tf) in tf.placeholder = "description" }
         
         let action = UIAlertAction(title: "Valider", style: .default) { (_) in
-            guard let name = alert.textFields?.first?.text
+            guard let name = alert.textFields?.first?.text, let description = alert.textFields?.last?.text
                 else { return }
             print(name)
-            
-            let insertExercice = self.trainingTable.insert(self.nameExercice <- name)
-            
+            print(description)
+            let insertExercice = self.exerciceTable.insert(self.nameExercice <- name, self.description <- description)
+            print (insertExercice)
             do {
                 try self.database.run(insertExercice)
                 print("Exercice inséré !")
-            //    self.listExercice()
+                self.listExercice()
                 vc.tableView.reloadData()
                 vc.viewWillAppear(true)
             } catch {
@@ -144,9 +146,23 @@ class DataBase {
         
     }
     
+    public func listExercice(){
+        print("Affichage de la liste des exercices")
+        
+        do {
+            let exercice = try self.database.prepare(self.exerciceTable)
+            for exerciceEntry in exercice {
+                print(" name: \(exerciceEntry[self.name]), idExo: \(exerciceEntry[self.idExercice])")
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
     
     public func listTraining(){
-        print("Affichage de la liste")
+        print("Affichage de la liste des entrainements")
         
         do {
             let training = try self.database.prepare(self.trainingTable)
@@ -175,9 +191,9 @@ class DataBase {
         } catch {
             print(error)
         }
-      
+        
         return trainingArray
-      
+        
     }
     
     public func getTrainingTitle() -> [String] {
@@ -217,9 +233,24 @@ class DataBase {
         return TrainingKeyArray
     }
     
+    public func  getExerciceDescription() -> [String]{
+        var DescriptionArray: [String] = []
+        
+        do {
+            
+            let description = try self.database.prepare(self.exerciceTable)
+            for descriptionEntry in description {
+                let descriptionCell: String = descriptionEntry[self.description]
+                DescriptionArray.append(descriptionCell)
+            }
+        } catch {
+            print(error)
+        }
+        return DescriptionArray
+    }
     
     public func getTrainingExercice() -> [String]{
-    
+        
         var exerciceArray: [String] = []
         
         do {
@@ -241,18 +272,68 @@ class DataBase {
     
     
     public func deleteTraining(trainingId : Int ) {
-        print("DELETE TAPPED")
-            
-            let training = self.trainingTable.filter(self.id == trainingId)
-            let deleteTraining = training.delete()
-            do {
-                try self.database.run(deleteTraining)
-            } catch {
-                print(error)
-            }
- 
+
+        let training = self.trainingTable.filter(self.id == trainingId)
+        let deleteTraining = training.delete()
+        do {
+            try self.database.run(deleteTraining)
+        } catch {
+            print(error)
         }
+        
+    }
     
+    
+    public func deleteExercice(exerciceKey : Int ) {
+        let exercice = self.exerciceTable.filter(self.idExercice == exerciceKey)
+        let deleteExercice = exercice.delete()
+        do {
+            try self.database.run(deleteExercice)
+            print("YOOOOOOOOOO3")
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    
+    public func getExercice() -> [Exercice]{
+        var exerciceArray: [Exercice] = []
+        
+        do{
+            let exercice = try self.database.prepare(self.exerciceTable)
+            for exerciceEntry in exercice {
+                let exerciceLigne = Exercice(exerciceKey: exerciceEntry[idExercice], titre: exerciceEntry[name], description: exerciceEntry[description])
+                
+                
+                exerciceArray.append(exerciceLigne)
+            }
+        }
+        catch {
+            print(error)
+        }
+        
+        return exerciceArray
+    }
+    
+    public func getTraining() -> [Entrainement]{
+        var trainingArray: [Entrainement] = []
+        
+        do{
+            let training = try self.database.prepare(self.exerciceTable)
+            for trainingEntry in training {
+                let trainingLigne = Entrainement(titre: trainingEntry[name], key: trainingEntry[id])
+                
+                
+                trainingArray.append(trainingLigne)
+            }
+        }
+        catch {
+            print(error)
+        }
+        
+        return trainingArray
+    }
     
     
     

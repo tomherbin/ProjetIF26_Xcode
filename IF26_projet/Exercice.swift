@@ -14,13 +14,36 @@ class Exercice{
     private var reps:Int
     private var serie:Int
     private var exerciceKey:Int
+    private var description:String
     
     
-    init(exerciceKey:Int, reps:Int,serie:Int, titre:String){
+    init(exerciceKey:Int, reps:Int,serie:Int, titre:String, description:String){
         self.exerciceKey = exerciceKey
         self.reps = reps
         self.serie = serie
         self.titre = titre
+        self.description = description
+    }
+    
+    init(exerciceKey:Int, titre:String, description:String){
+        self.exerciceKey = exerciceKey
+        self.titre = titre
+        self.description = description
+        self.reps = 0
+        self.serie = 0
+    }
+    
+    func getTitle() -> String{
+        return self.titre
+    }
+    
+    
+    func getDescription() -> String{
+        return self.description
+    }
+    
+    func getKey() -> Int{
+        return self.exerciceKey
     }
     
     
