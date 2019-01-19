@@ -12,9 +12,11 @@ import SQLite
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
-    var list = DataBase.GetInstance().getTrainingString()
+    var list = DataBase.GetInstance().getTrainingTitle()
+    var idList = DataBase.GetInstance().getTrainingKey()
     var myIndex = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,10 +24,48 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = list[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
+        //cell.textLabel?.text = list[indexPath.row]
+        cell.titreEntrainement.text = list[indexPath.row]
+        //  cell.idEntrainement = idList[indexPath.row]
         
         return(cell)
+    }
+    
+    //Autoriser le reorder
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = list[sourceIndexPath.row]
+        list.remove(at: sourceIndexPath.row)
+        list.insert(item, at: destinationIndexPath.row)
+    }
+    
+    
+    @IBAction func rearrange(_ sender: UIBarButtonItem) {
+        tableView.isEditing = !tableView.isEditing
+        
+        //doesn't work
+        switch tableView.isEditing {
+        case true:
+            editButton.title = "done"
+        case false:
+            editButton.title = "edit"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == UITableViewCell.EditingStyle.delete)
+        {
+            list.remove(at: indexPath.row)
+            tableView.reloadData()
+            
+           // DataBase.GetInstance().deleteTraining(trainingId: idList[indexPath.row])
+           // idList.remove(at: indexPath.row)
+            //print(idList)
+        }
     }
     
     
@@ -38,19 +78,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        list = DataBase.GetInstance().getTrainingString()
+        list = DataBase.GetInstance().getTrainingTitle()
         self.tableView.reloadData()
     }
     
     @IBAction func addTraining(_ sender: UIBarButtonItem) {
-        print("lol1")
         DataBase.GetInstance().insertEntrainement(vc: self)
-        print("lo2")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataBase.GetInstance().listTraining()
+        //DataBase.GetInstance().listTraining()
     }
     
     

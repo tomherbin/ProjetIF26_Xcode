@@ -20,7 +20,7 @@ class DataBase {
     let name = Expression<String>("titre")
   
     
-    let exerciceTable = Table("entrainement")
+    let exerciceTable = Table("exercice")
     let idExercice = Expression<Int>("idExo")
     let nameExercice = Expression<String>("titre")
     
@@ -58,7 +58,7 @@ class DataBase {
         }
         let createExerciceTable = self.exerciceTable.create { (table) in
             table.column(self.idExercice, primaryKey: true)
-            table.column(self.name)
+            table.column(self.nameExercice)
             
         }
         
@@ -79,10 +79,7 @@ class DataBase {
     
     
     public func insertEntrainement(vc: FirstViewController){
-    print("Entrée de l'entrainement")
-        
-        
-        print("INSERT TAPPED")
+
         let alert = UIAlertController(title: "Nouvel entrainement", message: nil, preferredStyle: .alert)
         alert.addTextField { (tf) in tf.placeholder = "titre" }
       
@@ -99,7 +96,6 @@ class DataBase {
                 self.listTraining()
                 vc.tableView.reloadData()
                 vc.viewWillAppear(true)
-                print("lold")
             } catch {
                 print(error)
             }
@@ -112,6 +108,39 @@ class DataBase {
             alert.addAction(action)
        vc.present(alert, animated: true, completion: nil)
       
+        
+    }
+    
+    public func insertExercice(vc: ExerciceTabViewController){
+      
+        let alert = UIAlertController(title: "Nouvel exercice", message: nil, preferredStyle: .alert)
+        alert.addTextField { (tf) in tf.placeholder = "titre" }
+        
+        let action = UIAlertAction(title: "Valider", style: .default) { (_) in
+            guard let name = alert.textFields?.first?.text
+                else { return }
+            print(name)
+            
+            let insertExercice = self.trainingTable.insert(self.nameExercice <- name)
+            
+            do {
+                try self.database.run(insertExercice)
+                print("Exercice inséré !")
+            //    self.listExercice()
+                vc.tableView.reloadData()
+                vc.viewWillAppear(true)
+            } catch {
+                print(error)
+            }
+            
+        }
+        
+        let action2 = UIAlertAction(title: "Annuler", style: .default)
+        
+        alert.addAction(action2)
+        alert.addAction(action)
+        vc.present(alert, animated: true, completion: nil)
+        
         
     }
     
@@ -150,6 +179,81 @@ class DataBase {
         return trainingArray
       
     }
-      
+    
+    public func getTrainingTitle() -> [String] {
+        
+        var trainingArray: [String] = []
+        
+        do {
+            
+            let training = try self.database.prepare(self.trainingTable)
+            for trainingEntry in training {
+                print("\(trainingEntry[self.name])")
+                
+                let trainingCell = "\(trainingEntry[self.name])"
+                trainingArray.append(trainingCell)
+            }
+        } catch {
+            print(error)
+        }
+        
+        return trainingArray
+        
+    }
+    
+    public func getTrainingKey() -> [Int] {
+        var TrainingKeyArray: [Int] = []
+        
+        do {
+            
+            let training = try self.database.prepare(self.trainingTable)
+            for trainingEntry in training {
+                let trainingCell: Int = trainingEntry[self.id]
+                TrainingKeyArray.append(trainingCell)
+            }
+        } catch {
+            print(error)
+        }
+        return TrainingKeyArray
+    }
+    
+    
+    public func getTrainingExercice() -> [String]{
+    
+        var exerciceArray: [String] = []
+        
+        do {
+            
+            let training = try self.database.prepare(self.exerciceTable)
+            for exerciceEntry in training {
+                print("\(exerciceEntry[self.nameExercice])")
+                
+                let exerciceCell = "\(exerciceEntry[self.nameExercice])"
+                exerciceArray.append(exerciceCell)
+            }
+        } catch {
+            print(error)
+        }
+        
+        return exerciceArray
+    }
+    
+    
+    
+    public func deleteTraining(trainingId : Int ) {
+        print("DELETE TAPPED")
+            
+            let training = self.trainingTable.filter(self.id == trainingId)
+            let deleteTraining = training.delete()
+            do {
+                try self.database.run(deleteTraining)
+            } catch {
+                print(error)
+            }
+ 
+        }
+    
+    
+    
     
 }
