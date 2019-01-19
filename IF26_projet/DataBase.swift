@@ -316,15 +316,34 @@ class DataBase {
         return exerciceArray
     }
     
+    
+    public func getExerciceFromTraining(key: Int) -> [Exercice]{
+            
+            var exerciceArray: [Exercice] = []
+            let selectExercice = trainingTable.join(exerciceTable, on: id == key)
+            do {
+                for exerciceEntry in try database.prepare(selectExercice) {
+                    
+                    let exerciceLigne = Exercice(exerciceKey: exerciceEntry[idExercice], titre: exerciceEntry[name], description: exerciceEntry[description])
+                    
+                    exerciceArray.append(exerciceLigne)
+                }
+            }catch {
+                print(error)
+            }
+            return exerciceArray
+        }
+    
+    
     public func getTraining() -> [Entrainement]{
         var trainingArray: [Entrainement] = []
         
         do{
-            let training = try self.database.prepare(self.exerciceTable)
+            let training = try self.database.prepare(self.trainingTable)
             for trainingEntry in training {
                 let trainingLigne = Entrainement(titre: trainingEntry[name], key: trainingEntry[id])
                 
-                
+                print(trainingLigne)
                 trainingArray.append(trainingLigne)
             }
         }

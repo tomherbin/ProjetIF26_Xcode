@@ -13,7 +13,7 @@ class Entrainement{
     
     private var titre:String
     private var key:Int
-    private var array = [Exercice]()
+    //private var array = [Exercice]()
     
     init(titre:String, key:Int) {
         self.key = key

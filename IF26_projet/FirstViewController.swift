@@ -15,21 +15,19 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
-    var list = DataBase.GetInstance().getTrainingTitle()
-    var idList = DataBase.GetInstance().getTrainingKey()
+    
+    private var trainingArray: [Entrainement] = []
     var myIndex = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return trainingArray.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
-        //cell.textLabel?.text = list[indexPath.row]
-        cell.titreEntrainement.text = list[indexPath.row]
-        //  cell.idEntrainement = idList[indexPath.row]
-        
-        
+        print(trainingArray[indexPath.item].getTitle())
+        cell.titreEntrainement?.text = trainingArray[indexPath.item].getTitle()
         return(cell)
     }
     
@@ -39,9 +37,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = list[sourceIndexPath.row]
-        list.remove(at: sourceIndexPath.row)
-        list.insert(item, at: destinationIndexPath.row)
+        let item = trainingArray[sourceIndexPath.row]
+        trainingArray.remove(at: sourceIndexPath.row)
+        trainingArray.insert(item, at: destinationIndexPath.row)
     }
     
     
@@ -60,27 +58,15 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCell.EditingStyle.delete)
         {
-            list.remove(at: indexPath.row)
+            DataBase.GetInstance().deleteTraining(trainingId: trainingArray[indexPath.row].getKey())
+            trainingArray.remove(at: indexPath.row)
             tableView.reloadData()
-            
-           // DataBase.GetInstance().deleteTraining(trainingId: idList[indexPath.row])
-           // idList.remove(at: indexPath.row)
-            //print(idList)
         }
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
         performSegue(withIdentifier: "Segue", sender: self)
-    }
-    
-    
-    
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        list = DataBase.GetInstance().getTrainingString()
-        self.tableView.reloadData()
     }
     
     @IBAction func addTraining(_ sender: UIBarButtonItem) {
@@ -89,8 +75,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //DataBase.GetInstance().listTraining()
+        trainingArray = DataBase.GetInstance().getTraining()
+        
     }
+    
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trainingArray = DataBase.GetInstance().getTraining()
+        self.tableView.reloadData()
+    }
+    
+    
     
     
 }
