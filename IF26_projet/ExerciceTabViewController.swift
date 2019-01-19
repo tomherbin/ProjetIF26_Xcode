@@ -28,6 +28,7 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
       cell.titleExo?.text = exerciceArray[indexPath.item].getTitle()
         cell.descriptionExo?.text = exerciceArray[indexPath.item].getDescription()
         return(cell)
+        
     }
     
     //Autoriser le reorder
@@ -66,21 +67,25 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func addExercice(_ sender: Any) {
         DataBase.GetInstance().insertExercice(vc: self)
+      //  DataBase.GetInstance().insertExercice(vc: self)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         DataBase.GetInstance().listTraining()
+        
     }
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         exerciceArray = DataBase.GetInstance().getExercice()
         self.tableView.reloadData()
-        
-        
-      
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "SegueFinal", sender: self)
     }
 
     

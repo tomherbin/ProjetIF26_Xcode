@@ -17,6 +17,8 @@ class Exercice{
     private var description:String
     
     
+    
+    
     init(exerciceKey:Int, reps:Int,serie:Int, titre:String, description:String){
         self.exerciceKey = exerciceKey
         self.reps = reps
@@ -33,6 +35,7 @@ class Exercice{
         self.serie = 0
     }
     
+   
     func getTitle() -> String{
         return self.titre
     }

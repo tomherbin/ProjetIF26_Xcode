@@ -25,6 +25,7 @@ class DataBase {
     let nameExercice = Expression<String>("titre")
     let description = Expression<String>("description")
     
+     let jointureTable = Table("jointure")
     
     static func GetInstance()->DataBase{
         
@@ -62,6 +63,10 @@ class DataBase {
             table.column(self.nameExercice)
             table.column(self.description)
         }
+        let jointureTable = self.jointureTable.create { (table) in
+            table.column(self.id)
+            table.column(self.idExercice)
+        }
         
         do {
             /*print("Suppression des tables si changement de structure");
@@ -70,6 +75,7 @@ class DataBase {
             
             try self.database.run(createTrainingTable)
             try self.database.run(createExerciceTable)
+            try self.database.run(jointureTable)
             print("Created Table")
         } catch {
             print(error)
@@ -114,6 +120,8 @@ class DataBase {
     
     public func insertExercice(vc: ExerciceTabViewController){
         
+        //try self.database.run(trainingTable.drop(ifExists : true))
+        
         let alert = UIAlertController(title: "Nouvel exercice", message: nil, preferredStyle: .alert)
         alert.addTextField { (tf) in tf.placeholder = "titre" }
         alert.addTextField { (tf) in tf.placeholder = "description" }
@@ -143,8 +151,50 @@ class DataBase {
         alert.addAction(action)
         vc.present(alert, animated: true, completion: nil)
         
-        
     }
+    /*
+    public func insertTrainingExercice(vc: ExerciceTabViewController, key: Int){
+        
+        //try self.database.run(trainingTable.drop(ifExists : true))
+        
+        let alert = UIAlertController(title: "Nouvel exercice", message: nil, preferredStyle: .alert)
+        alert.addTextField { (tf) in tf.placeholder = "titre" }
+        alert.addTextField { (tf) in tf.placeholder = "description" }
+        
+        let action = UIAlertAction(title: "Valider", style: .default) { (_) in
+            guard let name = alert.textFields?.first?.text, let description = alert.textFields?.last?.text
+                else { return }
+            print(name)
+            print(description)
+            let insertExercice = self.exerciceTable.insert(self.nameExercice <- name, self.description <- description)
+             print (insertExercice)
+            do {
+                try self.database.run(insertExercice)
+                print("Exercice inséré !")
+                self.listExercice()
+                vc.tableView.reloadData()
+                vc.viewWillAppear(true)
+            } catch {
+                print(error)
+            }
+            
+            
+            let insertJointure = self.jointureTable.insert(self.id <- key, self.idExercice <- )
+            do{
+                
+            }
+            catch{
+                
+            }
+        }
+        
+        let action2 = UIAlertAction(title: "Annuler", style: .default)
+        
+        alert.addAction(action2)
+        alert.addAction(action)
+        vc.present(alert, animated: true, completion: nil)
+        
+    }*/
     
     public func listExercice(){
         print("Affichage de la liste des exercices")
@@ -195,6 +245,25 @@ class DataBase {
         return trainingArray
         
     }
+    
+ /*   public func getExerciceKey(name : String) -> [String] {
+        
+        var ExerciceArray: [String] = []
+        do {
+            let Exercice = try self.database.prepare(self.ExerciceTable)
+            for trainingEntry in Exercice {
+                print("Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])")
+                
+                let trainingCell = "Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])"
+                trainingArray.append(trainingCell)
+            }
+        } catch {
+            print(error)
+        }
+        
+        return trainingArray
+        
+    }*/
     
     public func getTrainingTitle() -> [String] {
         

@@ -9,6 +9,8 @@
 import UIKit
 import SQLite
 
+  var myIndex = 0
+
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -17,7 +19,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     private var trainingArray: [Entrainement] = []
-    var myIndex = 0
+  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trainingArray.count
