@@ -26,6 +26,7 @@ class DataBase {
     let description = Expression<String>("description")
     
      let programmeTable = Table("programme")
+    let programmeExerciceId = Expression<Int>("idExoProg")
     
     static func GetInstance()->DataBase{
         
@@ -55,7 +56,6 @@ class DataBase {
         let createTrainingTable = self.trainingTable.create { (table) in
             table.column(self.id, primaryKey: true)
             table.column(self.name)
-            table.column(self.idExercice)
             
         }
         let createExerciceTable = self.exerciceTable.create { (table) in
@@ -65,7 +65,8 @@ class DataBase {
         }
         let createProgrammeTable = self.programmeTable.create { (table) in
             table.column(self.id)
-            table.column(self.idExercice)
+            table.column(self.programmeExerciceId)
+          //  table.foreignKey(self.programmeExerciceId, references: self.exerciceTable[self.idExercice], update: .Cascade, delete: .Cascade)
         }
         
         do {
@@ -96,7 +97,7 @@ class DataBase {
                 else { return }
             print(name)
             
-            let insertTraining = self.trainingTable.insert(self.name <- name, self.idExercice <- 0)
+            let insertTraining = self.trainingTable.insert(self.name <- name)
             
             do {
                 try self.database.run(insertTraining)
@@ -115,6 +116,23 @@ class DataBase {
         alert.addAction(action2)
         alert.addAction(action)
         vc.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    public func insertExercice(exercice : [Exercice]){
+        
+        for exerciceEntry in exercice {
+            let insertExercice = self.exerciceTable.insert(self.nameExercice <- exerciceEntry.getTitle(), self.description <- exerciceEntry.getDescription())
+            print (insertExercice)
+            do {
+                try self.database.run(insertExercice)
+                print("Exercice inséré !")
+                self.listExercice()
+            } catch {
+                print(error)
+            }
+        }
         
         
     }
@@ -154,11 +172,11 @@ class DataBase {
     
     public func addTrainingExercice(trainingKey : Int, exerciceKey : Int){
         
-        let insertExercice = self.programmeTable.insert(self.id <- trainingKey, self.idExercice <- exerciceKey)
+        let insertExercice = self.programmeTable.insert(self.id <- trainingKey, self.programmeExerciceId <- exerciceKey)
             print (insertExercice)
             do {
                 try self.database.run(insertExercice)
-                print("Exercice inséré !")
+                print("Exercice ajouté à l'entrainement !")
            //     vc.tableView.reloadData()
             //    vc.viewWillAppear(true)
             } catch {
@@ -168,6 +186,20 @@ class DataBase {
         }
         
     
+    
+    public func listProgramme(){
+        print("Affichage de la liste des programmes")
+        
+        do {
+            let programme = try self.database.prepare(self.programmeTable)
+            for programmeEntry in programme {
+                print(" id: \(programmeEntry[self.id]), idExo: \(programmeEntry[self.programmeExerciceId])")
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
     
     
     public func listExercice(){
@@ -191,7 +223,7 @@ class DataBase {
         do {
             let training = try self.database.prepare(self.trainingTable)
             for trainingEntry in training {
-                print("Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])")
+                print("Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), ")
             }
         } catch {
             print(error)
@@ -333,7 +365,18 @@ class DataBase {
         let deleteExercice = exercice.delete()
         do {
             try self.database.run(deleteExercice)
-            print("YOOOOOOOOOO3")
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    
+    public func deleteProgramme(exerciceKey : Int ) {
+        let exercice = self.programmeTable.filter(self.programmeExerciceId == exerciceKey)
+        let deleteExercice = exercice.delete()
+        do {
+            try self.database.run(deleteExercice)
         } catch {
             print(error)
         }
@@ -360,13 +403,17 @@ class DataBase {
         return exerciceArray
     }
     
+    /*Thread 1: Fatal error: 'try!' expression unexpectedly raised an error: Ambiguous column `"idExo"` (please disambiguate: ["\"exercice\".\"idExo\"", "\"programme\".\"idExo\""])*/
     
+    //Récupérer les exercices d'un entrainement avec une jointure
     public func getExerciceFromTraining(key: Int) -> [Exercice]{
             
             var exerciceArray: [Exercice] = []
-            let selectExercice = trainingTable.join(exerciceTable, on: id == key)
+            let selectExercice = programmeTable.join(exerciceTable, on: id == key && programmeExerciceId == idExercice)
+        print("----")
+        print(selectExercice)
             do {
-                for exerciceEntry in try database.prepare(selectExercice) {
+                for exerciceEntry in  try database.prepare(selectExercice) {
                     
                     let exerciceLigne = Exercice(exerciceKey: exerciceEntry[idExercice], titre: exerciceEntry[name], description: exerciceEntry[description])
                     
@@ -377,6 +424,8 @@ class DataBase {
             }
             return exerciceArray
         }
+    
+    
     
     
     public func getTraining() -> [Entrainement]{

@@ -10,6 +10,7 @@
 		E217371C21F3DE3A00E17BA0 /* ListExerciceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217371B21F3DE3A00E17BA0 /* ListExerciceViewController.swift */; };
 		E217371E21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */; };
 		E217372121F3EA6800E17BA0 /* Pompes.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E217372021F3EA6800E17BA0 /* Pompes.jpeg */; };
+		E217372421F48F9100E17BA0 /* BanqueExercice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217372321F48F9100E17BA0 /* BanqueExercice.swift */; };
 		E22F6FAB21F1C37C00EA5A70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */; };
 		E22F6FAD21F1C37C00EA5A70 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */; };
 		E22F6FAF21F1C37C00EA5A70 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAE21F1C37C00EA5A70 /* SecondViewController.swift */; };
@@ -105,6 +106,7 @@
 		E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExerciceViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		E217372021F3EA6800E17BA0 /* Pompes.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Pompes.jpeg; path = ../../../../../../../../Downloads/Pompes.jpeg; sourceTree = "<group>"; };
 		E217372221F3EA6E00E17BA0 /* pompes.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pompes.jpeg; sourceTree = "<group>"; };
+		E217372321F48F9100E17BA0 /* BanqueExercice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanqueExercice.swift; sourceTree = "<group>"; };
 		E22F6FA721F1C37C00EA5A70 /* IF26_projet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IF26_projet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				E22F6FB521F1C37E00EA5A70 /* LaunchScreen.storyboard */,
 				E22F6FB821F1C37E00EA5A70 /* Info.plist */,
 				E22F6FDE21F2059300EA5A70 /* DataBase.swift */,
+				E217372321F48F9100E17BA0 /* BanqueExercice.swift */,
 				E22F6FE021F2090600EA5A70 /* Entrainement.swift */,
 				E22F6FE221F20A8000EA5A70 /* Exercice.swift */,
 			);
@@ -345,6 +348,7 @@
 				E22F6FE121F2090600EA5A70 /* Entrainement.swift in Sources */,
 				E22F6FE321F20A8000EA5A70 /* Exercice.swift in Sources */,
 				E22F6FDF21F2059300EA5A70 /* DataBase.swift in Sources */,
+				E217372421F48F9100E17BA0 /* BanqueExercice.swift in Sources */,
 				E22F6FF521F358B400EA5A70 /* FirstViewControllerTableViewCell.swift in Sources */,
 				E217371E21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift in Sources */,
 				E22F6FED21F316B400EA5A70 /* ExerciceTabViewController.swift in Sources */,

@@ -24,7 +24,7 @@ class ListExerciceViewControllerTableViewCell: UITableViewCell {
         print("Ajout de l'exercice \(sender.tag) à l'entrainement de clé : \(myIndex)")
         
         DataBase.GetInstance().addTrainingExercice(trainingKey: myIndex, exerciceKey: sender.tag)
-        
+        DataBase.GetInstance().listProgramme()
         
     }
     

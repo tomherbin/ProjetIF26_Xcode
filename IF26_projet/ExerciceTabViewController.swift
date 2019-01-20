@@ -57,7 +57,7 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCell.EditingStyle.delete)
         {
-            DataBase.GetInstance().deleteExercice(exerciceKey: exerciceArray[indexPath.row].getKey())
+            DataBase.GetInstance().deleteProgramme(exerciceKey: exerciceArray[indexPath.row].getKey())
             exerciceArray.remove(at: indexPath.row)
             tableView.reloadData()
         }
@@ -79,7 +79,8 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        exerciceArray = DataBase.GetInstance().getExercice()
+        exerciceArray = DataBase.GetInstance().getExerciceFromTraining(key: myIndex)
+        print(exerciceArray)
         self.tableView.reloadData()
     }
     

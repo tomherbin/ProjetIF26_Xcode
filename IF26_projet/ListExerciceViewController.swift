@@ -8,13 +8,13 @@
 
 import UIKit
 
-var exercice : [Exercice] = []
+
 //var list : [String] = {"fsf","df"}
 
 
 class ListExerciceViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
-    
+    var exercice : [Exercice] = []
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,23 +25,15 @@ class ListExerciceViewController: UIViewController , UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciceListCell", for: indexPath) as! ListExerciceViewControllerTableViewCell
         cell.exoTitle?.text = exercice[indexPath.item].getTitle()
         cell.exoImage.image = UIImage(named: (exercice[indexPath.row].getTitle() + ".jpeg"))
-        cell.exoButton.tag = indexPath.item
+        cell.exoButton.tag = indexPath.item + 1
         return(cell)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(myIndex)
-        exercice.append(Exercice.init(exerciceKey: 0, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 1, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 2, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 3, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 4, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 5, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey:6, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 7, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 8, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        
+       BanqueExercice.GetInstance()
+        exercice = DataBase.GetInstance().getExercice()
     }
     
     
