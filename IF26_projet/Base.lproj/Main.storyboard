@@ -548,6 +548,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcH-d3-DXN">
                                                     <rect key="frame" x="257" y="58" width="50" height="48"/>
                                                     <state key="normal" title="Ajouter"/>
+                                                    <connections>
+                                                        <action selector="addExercice:" destination="Wud-a5-eP7" eventType="touchUpInside" id="hZi-Bu-h10"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -565,6 +568,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="exoButton" destination="JcH-d3-DXN" id="B2x-Tp-JGn"/>
                                             <outlet property="exoImage" destination="UBa-J3-9gd" id="Xf3-qI-BIy"/>
                                             <outlet property="exoTitle" destination="dDT-Xw-qLD" id="CF7-BA-JIW"/>
                                         </connections>

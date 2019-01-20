@@ -8,13 +8,30 @@
 
 import UIKit
 
+var indexExercice:Int = 0
+
 class ListExerciceViewControllerTableViewCell: UITableViewCell {
 
     
     
     @IBOutlet weak var exoImage: UIImageView!
     @IBOutlet weak var exoTitle: UILabel!
+    @IBOutlet weak var exoButton: UIButton!
+    
   
+    @IBAction func addExercice(_ sender: UIButton) {
+        
+        print("Ajout de l'exercice \(sender.tag) à l'entrainement de clé : \(myIndex)")
+        
+        DataBase.GetInstance().addTrainingExercice(trainingKey: myIndex, exerciceKey: sender.tag)
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexExercice = indexPath.row
+        
+    }
     
     
     override func awakeFromNib() {

@@ -18,23 +18,20 @@ class ListExerciceViewController: UIViewController , UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return exercice.count
+        return exercice.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciceListCell", for: indexPath) as! ListExerciceViewControllerTableViewCell
-        
-       cell.exoTitle?.text = exercice[indexPath.item].getTitle()
-       // cell.exoDescription?.text = exercice[indexPath.item].getDescription()
+        cell.exoTitle?.text = exercice[indexPath.item].getTitle()
         cell.exoImage.image = UIImage(named: (exercice[indexPath.row].getTitle() + ".jpeg"))
-        //cell.exoImage.image = UIImage(named: "pompes.jpeg")
-        print((exercice[indexPath.row].getTitle() + ".jpeg"))
+        cell.exoButton.tag = indexPath.item
         return(cell)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(myIndex)
         exercice.append(Exercice.init(exerciceKey: 0, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
         exercice.append(Exercice.init(exerciceKey: 1, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
         exercice.append(Exercice.init(exerciceKey: 2, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
@@ -49,7 +46,7 @@ class ListExerciceViewController: UIViewController , UITableViewDelegate, UITabl
     
     
     
-  
-   
-
+    
+    
+    
 }
