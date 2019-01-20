@@ -28,6 +28,7 @@ class ListExerciceViewControllerTableViewCell: UITableViewCell {
         DataBase.GetInstance().addTrainingExercice(trainingKey: myIndex, exerciceKey: sender.tag)
       //  exercice.remove(at: sender.tag)
         DataBase.GetInstance().listProgramme()
+         exoButton.setTitle( "ajouté" , for: .normal)
         
     }
     
