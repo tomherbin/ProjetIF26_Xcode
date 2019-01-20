@@ -18,12 +18,15 @@ class ListExerciceViewControllerTableViewCell: UITableViewCell {
     @IBOutlet weak var exoTitle: UILabel!
     @IBOutlet weak var exoButton: UIButton!
     
+    
+    
   
     @IBAction func addExercice(_ sender: UIButton) {
         
         print("Ajout de l'exercice \(sender.tag) à l'entrainement de clé : \(myIndex)")
         
         DataBase.GetInstance().addTrainingExercice(trainingKey: myIndex, exerciceKey: sender.tag)
+      //  exercice.remove(at: sender.tag)
         DataBase.GetInstance().listProgramme()
         
     }

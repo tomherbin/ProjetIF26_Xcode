@@ -8,14 +8,10 @@
 
 import UIKit
 
-
-//var list : [String] = {"fsf","df"}
-
-
 class ListExerciceViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
     var exercice : [Exercice] = []
-    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercice.count

@@ -34,7 +34,7 @@ class BanqueExercice {
         exercice.append(Exercice.init(exerciceKey: 6, reps: 8, serie: 4, titre: "Curl Biceps", description: "Allonger vous sur le ventre et poussez avec les bras"))
         exercice.append(Exercice.init(exerciceKey: 7, reps: 8, serie: 4, titre: "Curls Legs", description: "Allonger vous sur le ventre et poussez avec les bras"))
         exercice.append(Exercice.init(exerciceKey: 8, reps: 8, serie: 4, titre: "Extension Triceps", description: "Allonger vous sur le ventre et poussez avec les bras"))
-        exercice.append(Exercice.init(exerciceKey: 8, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
+        exercice.append(Exercice.init(exerciceKey: 9, reps: 8, serie: 4, titre: "Pompes", description: "Allonger vous sur le ventre et poussez avec les bras"))
         DataBase.GetInstance().insertExercice(exercice : exercice)
     }
     

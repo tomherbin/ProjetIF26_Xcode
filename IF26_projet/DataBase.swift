@@ -73,10 +73,10 @@ class DataBase {
         }
         
         do {
-            print("Suppression des tables si changement de structure");
+            /*print("Suppression des tables si changement de structure");
             try self.database.run(trainingTable.drop(ifExists : true))
             try self.database.run(exerciceTable.drop(ifExists : true))
-            try self.database.run(programmeTable.drop(ifExists : true))
+            try self.database.run(programmeTable.drop(ifExists : true))*/
             
             try self.database.run(createTrainingTable)
             try self.database.run(createExerciceTable)
@@ -85,8 +85,7 @@ class DataBase {
         } catch {
             print(error)
         }
-        
-        
+    
     }
     
     
@@ -119,7 +118,6 @@ class DataBase {
         alert.addAction(action2)
         alert.addAction(action)
         vc.present(alert, animated: true, completion: nil)
-        
         
     }
     

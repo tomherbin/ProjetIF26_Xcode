@@ -14,10 +14,12 @@
 		E217372621F4A92F00E17BA0 /* Tractions.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372521F4A92F00E17BA0 /* Tractions.jpg */; };
 		E217372821F4A98900E17BA0 /* DC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372721F4A98900E17BA0 /* DC.jpg */; };
 		E217372A21F4A9E000E17BA0 /* Butterfly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372921F4A9DF00E17BA0 /* Butterfly.jpg */; };
-		E217372C21F4AA0400E17BA0 /* Abdos.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E217372B21F4AA0400E17BA0 /* Abdos.jpeg */; };
+		E217372C21F4AA0400E17BA0 /* Abdos.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372B21F4AA0400E17BA0 /* Abdos.jpg */; };
 		E217372E21F4AA1E00E17BA0 /* Gainage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372D21F4AA1E00E17BA0 /* Gainage.jpg */; };
 		E217373021F4AA8500E17BA0 /* Curl Biceps.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372F21F4AA8500E17BA0 /* Curl Biceps.jpg */; };
-		E217373221F4AAFE00E17BA0 /* Curl Legs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217373121F4AAFE00E17BA0 /* Curl Legs.jpg */; };
+		E217373221F4AAFE00E17BA0 /* Curls Legs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217373121F4AAFE00E17BA0 /* Curls Legs.jpg */; };
+		E217373521F4D6CB00E17BA0 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217373421F4D6CB00E17BA0 /* FriendsListViewController.swift */; };
+		E217373921F4D94B00E17BA0 /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217373821F4D94B00E17BA0 /* FriendsListTableViewCell.swift */; };
 		E22F6FAB21F1C37C00EA5A70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */; };
 		E22F6FAD21F1C37C00EA5A70 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */; };
 		E22F6FAF21F1C37C00EA5A70 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAE21F1C37C00EA5A70 /* SecondViewController.swift */; };
@@ -117,11 +119,13 @@
 		E217372521F4A92F00E17BA0 /* Tractions.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Tractions.jpg; path = ../../../../../../../../Downloads/Tractions.jpg; sourceTree = "<group>"; };
 		E217372721F4A98900E17BA0 /* DC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = DC.jpg; path = ../../../../../../../../Downloads/DC.jpg; sourceTree = "<group>"; };
 		E217372921F4A9DF00E17BA0 /* Butterfly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Butterfly.jpg; path = ../../../../../../../../Downloads/Butterfly.jpg; sourceTree = "<group>"; };
-		E217372B21F4AA0400E17BA0 /* Abdos.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Abdos.jpeg; path = ../../../../../../../../Downloads/Abdos.jpeg; sourceTree = "<group>"; };
+		E217372B21F4AA0400E17BA0 /* Abdos.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Abdos.jpg; path = ../../../../../../../../Downloads/Abdos.jpg; sourceTree = "<group>"; };
 		E217372D21F4AA1E00E17BA0 /* Gainage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Gainage.jpg; path = ../../../../../../../../Downloads/Gainage.jpg; sourceTree = "<group>"; };
 		E217372F21F4AA8500E17BA0 /* Curl Biceps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Curl Biceps.jpg"; path = "../../../../../../../../Downloads/Curl Biceps.jpg"; sourceTree = "<group>"; };
-		E217373121F4AAFE00E17BA0 /* Curl Legs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Curl Legs.jpg"; path = "../../../../../../../../Downloads/Curl Legs.jpg"; sourceTree = "<group>"; };
+		E217373121F4AAFE00E17BA0 /* Curls Legs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Curls Legs.jpg"; path = "../../../../../../../../Downloads/Curls Legs.jpg"; sourceTree = "<group>"; };
 		E217373321F4AB0500E17BA0 /* Extension Triceps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Extension Triceps.jpg"; path = "../../../../../../../../Downloads/Extension Triceps.jpg"; sourceTree = "<group>"; };
+		E217373421F4D6CB00E17BA0 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		E217373821F4D94B00E17BA0 /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
 		E22F6FA721F1C37C00EA5A70 /* IF26_projet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IF26_projet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -190,15 +194,17 @@
 				E22F6FAE21F1C37C00EA5A70 /* SecondViewController.swift */,
 				E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */,
 				E22F6FB021F1C37C00EA5A70 /* Main.storyboard */,
+				E217373421F4D6CB00E17BA0 /* FriendsListViewController.swift */,
 				E217371B21F3DE3A00E17BA0 /* ListExerciceViewController.swift */,
+				E217373821F4D94B00E17BA0 /* FriendsListTableViewCell.swift */,
 				E22F6FB321F1C37E00EA5A70 /* Assets.xcassets */,
 				E217372521F4A92F00E17BA0 /* Tractions.jpg */,
 				E217372921F4A9DF00E17BA0 /* Butterfly.jpg */,
-				E217372B21F4AA0400E17BA0 /* Abdos.jpeg */,
+				E217372B21F4AA0400E17BA0 /* Abdos.jpg */,
 				E217372D21F4AA1E00E17BA0 /* Gainage.jpg */,
 				E217372F21F4AA8500E17BA0 /* Curl Biceps.jpg */,
 				E217373321F4AB0500E17BA0 /* Extension Triceps.jpg */,
-				E217373121F4AAFE00E17BA0 /* Curl Legs.jpg */,
+				E217373121F4AAFE00E17BA0 /* Curls Legs.jpg */,
 				E217372721F4A98900E17BA0 /* DC.jpg */,
 				E217372021F3EA6800E17BA0 /* Pompes.jpg */,
 				E217371F21F3EA1B00E17BA0 /* jpeg */,
@@ -356,12 +362,12 @@
 				E217372821F4A98900E17BA0 /* DC.jpg in Resources */,
 				E22F6FB721F1C37E00EA5A70 /* LaunchScreen.storyboard in Resources */,
 				E217372A21F4A9E000E17BA0 /* Butterfly.jpg in Resources */,
-				E217373221F4AAFE00E17BA0 /* Curl Legs.jpg in Resources */,
+				E217373221F4AAFE00E17BA0 /* Curls Legs.jpg in Resources */,
 				E22F6FB421F1C37E00EA5A70 /* Assets.xcassets in Resources */,
 				E22F6FB221F1C37C00EA5A70 /* Main.storyboard in Resources */,
 				E217372121F3EA6800E17BA0 /* Pompes.jpg in Resources */,
 				E217372621F4A92F00E17BA0 /* Tractions.jpg in Resources */,
-				E217372C21F4AA0400E17BA0 /* Abdos.jpeg in Resources */,
+				E217372C21F4AA0400E17BA0 /* Abdos.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,9 +380,11 @@
 			files = (
 				E22F6FF321F3520500EA5A70 /* ExerciceTabViewControllerTableViewCell.swift in Sources */,
 				E22F6FAF21F1C37C00EA5A70 /* SecondViewController.swift in Sources */,
+				E217373521F4D6CB00E17BA0 /* FriendsListViewController.swift in Sources */,
 				E22F6FAB21F1C37C00EA5A70 /* AppDelegate.swift in Sources */,
 				E22F6FE121F2090600EA5A70 /* Entrainement.swift in Sources */,
 				E22F6FE321F20A8000EA5A70 /* Exercice.swift in Sources */,
+				E217373921F4D94B00E17BA0 /* FriendsListTableViewCell.swift in Sources */,
 				E22F6FDF21F2059300EA5A70 /* DataBase.swift in Sources */,
 				E217372421F48F9100E17BA0 /* BanqueExercice.swift in Sources */,
 				E22F6FF521F358B400EA5A70 /* FirstViewControllerTableViewCell.swift in Sources */,
