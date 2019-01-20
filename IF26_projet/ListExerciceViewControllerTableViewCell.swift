@@ -1,5 +1,5 @@
 //
-//  FriendsTableViewCell.swift
+//  ListExerciceViewControllerTableViewCell.swift
 //  IF26_projet
 //
 //  Created by Tom Hache on 19/01/2019.
@@ -8,8 +8,15 @@
 
 import UIKit
 
-class FriendsTableViewCell: UITableViewCell {
+class ListExerciceViewControllerTableViewCell: UITableViewCell {
 
+    
+    
+    @IBOutlet weak var exoImage: UIImageView!
+    @IBOutlet weak var exoTitle: UILabel!
+  
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
