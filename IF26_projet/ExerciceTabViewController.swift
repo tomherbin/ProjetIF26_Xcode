@@ -9,11 +9,12 @@
 import UIKit
 import SQLite
 
-
+var indexDescription = 0
+ var exerciceArray: [Exercice] = []
 
 class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
   
-  private var exerciceArray: [Exercice] = []
+  
     
     @IBOutlet weak var editButton: UIBarButtonItem!
    // var myIndex = 0
@@ -27,6 +28,8 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ExerciceTabViewControllerTableViewCell
       cell.titleExo?.text = exerciceArray[indexPath.item].getTitle()
         cell.descriptionExo?.text = exerciceArray[indexPath.item].getDescription()
+        cell.imageExo?.image = UIImage(named: (exerciceArray[indexPath.item].getTitle() + ".jpg"))
+        
         return(cell)
         
     }
@@ -57,7 +60,7 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCell.EditingStyle.delete)
         {
-            DataBase.GetInstance().deleteProgramme(exerciceKey: exerciceArray[indexPath.row].getKey())
+            DataBase.GetInstance().deleteProgramme(exerciceKey: exerciceArray[indexPath.row].getKey(), trainingKey : myIndex)
             exerciceArray.remove(at: indexPath.row)
             tableView.reloadData()
         }
@@ -85,7 +88,7 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        myIndex = indexPath.row
+        indexDescription = indexPath.row
         performSegue(withIdentifier: "SegueFinal", sender: self)
     }
 

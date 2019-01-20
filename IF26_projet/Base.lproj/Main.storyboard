@@ -233,8 +233,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DR4-8R-wnr">
-                                <rect key="frame" x="30" y="81" width="306" height="182"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="fitmeet-logo" translatesAutoresizingMaskIntoConstraints="NO" id="DR4-8R-wnr">
+                                <rect key="frame" x="30" y="101" width="306" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="182" id="dcz-j4-Vvc"/>
                                 </constraints>
@@ -270,6 +270,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v0H-pS-nbu"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionExo" destination="OvJ-c5-bG9" id="b7o-7X-7Lg"/>
+                        <outlet property="imageExo" destination="DR4-8R-wnr" id="61w-on-TSb"/>
+                        <outlet property="titreExo" destination="1GD-n9-jTh" id="Ix2-Gl-y3z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fi-aq-jCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

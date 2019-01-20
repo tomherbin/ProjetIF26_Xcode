@@ -24,7 +24,7 @@ class ListExerciceViewController: UIViewController , UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciceListCell", for: indexPath) as! ListExerciceViewControllerTableViewCell
         cell.exoTitle?.text = exercice[indexPath.item].getTitle()
-        cell.exoImage.image = UIImage(named: (exercice[indexPath.row].getTitle() + ".jpeg"))
+        cell.exoImage.image = UIImage(named: (exercice[indexPath.row].getTitle() + ".jpg"))
         cell.exoButton.tag = indexPath.item + 1
         return(cell)
     }

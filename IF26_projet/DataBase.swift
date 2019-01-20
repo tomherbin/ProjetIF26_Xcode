@@ -66,14 +66,17 @@ class DataBase {
         let createProgrammeTable = self.programmeTable.create { (table) in
             table.column(self.id)
             table.column(self.programmeExerciceId)
-          //  table.foreignKey(self.programmeExerciceId, references: self.exerciceTable[self.idExercice], update: .Cascade, delete: .Cascade)
+            
+            table.primaryKey(self.id, self.programmeExerciceId)
+            table.foreignKey(self.programmeExerciceId, references: exerciceTable, self.idExercice)
+            table.foreignKey(self.id, references: trainingTable, self.id)
         }
         
         do {
-           /* print("Suppression des tables si changement de structure");
+            print("Suppression des tables si changement de structure");
             try self.database.run(trainingTable.drop(ifExists : true))
             try self.database.run(exerciceTable.drop(ifExists : true))
-            try self.database.run(programmeTable.drop(ifExists : true))*/
+            try self.database.run(programmeTable.drop(ifExists : true))
             
             try self.database.run(createTrainingTable)
             try self.database.run(createExerciceTable)
@@ -120,10 +123,11 @@ class DataBase {
         
     }
     
+    //Chargement de la banque d'exercice
     public func insertExercice(exercice : [Exercice]){
         
         for exerciceEntry in exercice {
-            let insertExercice = self.exerciceTable.insert(self.nameExercice <- exerciceEntry.getTitle(), self.description <- exerciceEntry.getDescription())
+            let insertExercice = self.exerciceTable.insert(self.nameExercice <- exerciceEntry.getTitle(), self.description <- exerciceEntry.getDescription(), self.idExercice <- exerciceEntry.getKey())
             print (insertExercice)
             do {
                 try self.database.run(insertExercice)
@@ -137,6 +141,7 @@ class DataBase {
         
     }
     
+    //Boite de dialogue d'ajout d'exercice, plus utilisé
     public func insertExercice(vc: ExerciceTabViewController){
         
         let alert = UIAlertController(title: "Nouvel exercice", message: nil, preferredStyle: .alert)
@@ -372,8 +377,8 @@ class DataBase {
     }
     
     
-    public func deleteProgramme(exerciceKey : Int ) {
-        let exercice = self.programmeTable.filter(self.programmeExerciceId == exerciceKey)
+    public func deleteProgramme(exerciceKey : Int, trainingKey : Int ) {
+        let exercice = self.programmeTable.filter(self.programmeExerciceId == exerciceKey).filter(self.id == trainingKey)
         let deleteExercice = exercice.delete()
         do {
             try self.database.run(deleteExercice)
