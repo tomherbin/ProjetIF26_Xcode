@@ -75,19 +75,15 @@ class DataBase {
         let createProgrammeTable = self.programmeTable.create(ifNotExists: true) { (table) in
             table.column(self.id)
             table.column(self.programmeExerciceId)
-            
             table.primaryKey(self.id, self.programmeExerciceId)
             table.foreignKey(self.programmeExerciceId, references: exerciceTable, self.idExercice, delete:.cascade)
             table.foreignKey(self.id, references: trainingTable, self.id, delete:.cascade)
         }
-        
-        
-        
         do {
             /*print("Suppression des tables si changement de structure");
-            try self.database.run(trainingTable.drop(ifExists : true))
-            try self.database.run(exerciceTable.drop(ifExists : true))
-            try self.database.run(programmeTable.drop(ifExists : true))*/
+             try self.database.run(trainingTable.drop(ifExists : true))
+             try self.database.run(exerciceTable.drop(ifExists : true))
+             try self.database.run(programmeTable.drop(ifExists : true))*/
             
             try self.database.run(createTrainingTable)
             try self.database.run(createExerciceTable)
@@ -365,10 +361,10 @@ class DataBase {
         
         let training = self.trainingTable.filter(self.id == trainingId)
         self.deleteProgramme(trainingKey: trainingId)
-   
-      
+        
+        
         let deleteTraining = training.delete()
-
+        
         do {
             try self.database.run(deleteTraining)
             

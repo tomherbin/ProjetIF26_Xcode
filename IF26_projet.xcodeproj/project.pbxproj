@@ -9,15 +9,7 @@
 /* Begin PBXBuildFile section */
 		E217371C21F3DE3A00E17BA0 /* ListExerciceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217371B21F3DE3A00E17BA0 /* ListExerciceViewController.swift */; };
 		E217371E21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */; };
-		E217372121F3EA6800E17BA0 /* Pompes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372021F3EA6800E17BA0 /* Pompes.jpg */; };
 		E217372421F48F9100E17BA0 /* BanqueExercice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E217372321F48F9100E17BA0 /* BanqueExercice.swift */; };
-		E217372621F4A92F00E17BA0 /* Tractions.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372521F4A92F00E17BA0 /* Tractions.jpg */; };
-		E217372821F4A98900E17BA0 /* DC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372721F4A98900E17BA0 /* DC.jpg */; };
-		E217372A21F4A9E000E17BA0 /* Butterfly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372921F4A9DF00E17BA0 /* Butterfly.jpg */; };
-		E217372C21F4AA0400E17BA0 /* Abdos.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372B21F4AA0400E17BA0 /* Abdos.jpg */; };
-		E217372E21F4AA1E00E17BA0 /* Gainage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372D21F4AA1E00E17BA0 /* Gainage.jpg */; };
-		E217373021F4AA8500E17BA0 /* Curl Biceps.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217372F21F4AA8500E17BA0 /* Curl Biceps.jpg */; };
-		E217373221F4AAFE00E17BA0 /* Curls Legs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E217373121F4AAFE00E17BA0 /* Curls Legs.jpg */; };
 		E22F6FAB21F1C37C00EA5A70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */; };
 		E22F6FAD21F1C37C00EA5A70 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */; };
 		E22F6FAF21F1C37C00EA5A70 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FAE21F1C37C00EA5A70 /* SecondViewController.swift */; };
@@ -34,19 +26,6 @@
 		E22F6FF521F358B400EA5A70 /* FirstViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FF421F358B400EA5A70 /* FirstViewControllerTableViewCell.swift */; };
 		E22F6FF721F3B11900EA5A70 /* ExerciceDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F6FF621F3B11900EA5A70 /* ExerciceDescriptionViewController.swift */; };
 		E28D42CB21F4F08C00082E0A /* FriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D42CA21F4F08C00082E0A /* FriendsCollectionViewCell.swift */; };
-		E28D42CD21F4F7EF00082E0A /* Marc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42CC21F4F7EF00082E0A /* Marc.jpg */; };
-		E28D42D121F4F7F900082E0A /* Henri.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D021F4F7F900082E0A /* Henri.jpg */; };
-		E28D42DE21F50EC000082E0A /* Henri.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D321F50EBE00082E0A /* Henri.jpg */; };
-		E28D42DF21F50EC000082E0A /* Damien.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D421F50EBE00082E0A /* Damien.jpg */; };
-		E28D42E021F50EC000082E0A /* Louis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D521F50EBE00082E0A /* Louis.jpg */; };
-		E28D42E121F50EC000082E0A /* Franck.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D621F50EBF00082E0A /* Franck.jpg */; };
-		E28D42E221F50EC000082E0A /* Julien.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D721F50EBF00082E0A /* Julien.jpg */; };
-		E28D42E321F50EC000082E0A /* Moise.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D821F50EBF00082E0A /* Moise.jpg */; };
-		E28D42E421F50EC000082E0A /* Tom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42D921F50EBF00082E0A /* Tom.jpg */; };
-		E28D42E521F50EC000082E0A /* Loic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42DA21F50EBF00082E0A /* Loic.jpg */; };
-		E28D42E621F50EC000082E0A /* Jeanne.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42DB21F50EC000082E0A /* Jeanne.jpg */; };
-		E28D42E721F50EC000082E0A /* Marc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42DC21F50EC000082E0A /* Marc.jpg */; };
-		E28D42E921F50FEC00082E0A /* Jean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28D42E821F50FEC00082E0A /* Jean.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,16 +104,7 @@
 /* Begin PBXFileReference section */
 		E217371B21F3DE3A00E17BA0 /* ListExerciceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExerciceViewController.swift; sourceTree = "<group>"; };
 		E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExerciceViewControllerTableViewCell.swift; sourceTree = "<group>"; };
-		E217372021F3EA6800E17BA0 /* Pompes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Pompes.jpg; path = ../../../../../../../../Downloads/Pompes.jpg; sourceTree = "<group>"; };
 		E217372321F48F9100E17BA0 /* BanqueExercice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanqueExercice.swift; sourceTree = "<group>"; };
-		E217372521F4A92F00E17BA0 /* Tractions.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Tractions.jpg; path = ../../../../../../../../Downloads/Tractions.jpg; sourceTree = "<group>"; };
-		E217372721F4A98900E17BA0 /* DC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = DC.jpg; path = ../../../../../../../../Downloads/DC.jpg; sourceTree = "<group>"; };
-		E217372921F4A9DF00E17BA0 /* Butterfly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Butterfly.jpg; path = ../../../../../../../../Downloads/Butterfly.jpg; sourceTree = "<group>"; };
-		E217372B21F4AA0400E17BA0 /* Abdos.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Abdos.jpg; path = ../../../../../../../../Downloads/Abdos.jpg; sourceTree = "<group>"; };
-		E217372D21F4AA1E00E17BA0 /* Gainage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Gainage.jpg; path = ../../../../../../../../Downloads/Gainage.jpg; sourceTree = "<group>"; };
-		E217372F21F4AA8500E17BA0 /* Curl Biceps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Curl Biceps.jpg"; path = "../../../../../../../../Downloads/Curl Biceps.jpg"; sourceTree = "<group>"; };
-		E217373121F4AAFE00E17BA0 /* Curls Legs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Curls Legs.jpg"; path = "../../../../../../../../Downloads/Curls Legs.jpg"; sourceTree = "<group>"; };
-		E217373321F4AB0500E17BA0 /* Extension Triceps.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Extension Triceps.jpg"; path = "../../../../../../../../Downloads/Extension Triceps.jpg"; sourceTree = "<group>"; };
 		E22F6FA721F1C37C00EA5A70 /* IF26_projet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IF26_projet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -152,19 +122,6 @@
 		E22F6FF421F358B400EA5A70 /* FirstViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		E22F6FF621F3B11900EA5A70 /* ExerciceDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceDescriptionViewController.swift; sourceTree = "<group>"; };
 		E28D42CA21F4F08C00082E0A /* FriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewCell.swift; sourceTree = "<group>"; };
-		E28D42CC21F4F7EF00082E0A /* Marc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Marc.jpg; path = ../../../../../../../../Downloads/Marc.jpg; sourceTree = "<group>"; };
-		E28D42D021F4F7F900082E0A /* Henri.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Henri.jpg; path = ../../../../../../../../Downloads/Henri.jpg; sourceTree = "<group>"; };
-		E28D42D321F50EBE00082E0A /* Henri.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Henri.jpg; path = ../../../../../../../../Downloads/Henri.jpg; sourceTree = "<group>"; };
-		E28D42D421F50EBE00082E0A /* Damien.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Damien.jpg; path = ../../../../../../../../Downloads/Damien.jpg; sourceTree = "<group>"; };
-		E28D42D521F50EBE00082E0A /* Louis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Louis.jpg; path = ../../../../../../../../Downloads/Louis.jpg; sourceTree = "<group>"; };
-		E28D42D621F50EBF00082E0A /* Franck.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Franck.jpg; path = ../../../../../../../../Downloads/Franck.jpg; sourceTree = "<group>"; };
-		E28D42D721F50EBF00082E0A /* Julien.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Julien.jpg; path = ../../../../../../../../Downloads/Julien.jpg; sourceTree = "<group>"; };
-		E28D42D821F50EBF00082E0A /* Moise.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Moise.jpg; path = ../../../../../../../../Downloads/Moise.jpg; sourceTree = "<group>"; };
-		E28D42D921F50EBF00082E0A /* Tom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Tom.jpg; path = ../../../../../../../../Downloads/Tom.jpg; sourceTree = "<group>"; };
-		E28D42DA21F50EBF00082E0A /* Loic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Loic.jpg; path = ../../../../../../../../Downloads/Loic.jpg; sourceTree = "<group>"; };
-		E28D42DB21F50EC000082E0A /* Jeanne.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Jeanne.jpg; path = ../../../../../../../../Downloads/Jeanne.jpg; sourceTree = "<group>"; };
-		E28D42DC21F50EC000082E0A /* Marc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Marc.jpg; path = ../../../../../../../../Downloads/Marc.jpg; sourceTree = "<group>"; };
-		E28D42E821F50FEC00082E0A /* Jean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Jean.jpg; path = ../../../../../../../../Downloads/Jean.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,46 +157,12 @@
 		E22F6FA921F1C37C00EA5A70 /* IF26_projet */ = {
 			isa = PBXGroup;
 			children = (
+				E233AB8321F633520076F983 /* Vue */,
 				E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */,
-				E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */,
-				E22F6FF421F358B400EA5A70 /* FirstViewControllerTableViewCell.swift */,
-				E22F6FEC21F316B400EA5A70 /* ExerciceTabViewController.swift */,
-				E22F6FF621F3B11900EA5A70 /* ExerciceDescriptionViewController.swift */,
-				E22F6FF221F3520500EA5A70 /* ExerciceTabViewControllerTableViewCell.swift */,
-				E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */,
-				E22F6FB021F1C37C00EA5A70 /* Main.storyboard */,
-				E28D42CA21F4F08C00082E0A /* FriendsCollectionViewCell.swift */,
-				E217371B21F3DE3A00E17BA0 /* ListExerciceViewController.swift */,
-				E22F6FAE21F1C37C00EA5A70 /* SecondViewController.swift */,
 				E22F6FB321F1C37E00EA5A70 /* Assets.xcassets */,
-				E217372521F4A92F00E17BA0 /* Tractions.jpg */,
-				E217372921F4A9DF00E17BA0 /* Butterfly.jpg */,
-				E217372B21F4AA0400E17BA0 /* Abdos.jpg */,
-				E217372D21F4AA1E00E17BA0 /* Gainage.jpg */,
-				E217372F21F4AA8500E17BA0 /* Curl Biceps.jpg */,
-				E28D42D421F50EBE00082E0A /* Damien.jpg */,
-				E28D42D621F50EBF00082E0A /* Franck.jpg */,
-				E28D42E821F50FEC00082E0A /* Jean.jpg */,
-				E28D42D321F50EBE00082E0A /* Henri.jpg */,
-				E28D42DB21F50EC000082E0A /* Jeanne.jpg */,
-				E28D42D721F50EBF00082E0A /* Julien.jpg */,
-				E28D42DA21F50EBF00082E0A /* Loic.jpg */,
-				E28D42D521F50EBE00082E0A /* Louis.jpg */,
-				E28D42DC21F50EC000082E0A /* Marc.jpg */,
-				E28D42D821F50EBF00082E0A /* Moise.jpg */,
-				E28D42D921F50EBF00082E0A /* Tom.jpg */,
-				E217373321F4AB0500E17BA0 /* Extension Triceps.jpg */,
-				E217373121F4AAFE00E17BA0 /* Curls Legs.jpg */,
-				E28D42D021F4F7F900082E0A /* Henri.jpg */,
-				E28D42CC21F4F7EF00082E0A /* Marc.jpg */,
-				E217372721F4A98900E17BA0 /* DC.jpg */,
-				E217372021F3EA6800E17BA0 /* Pompes.jpg */,
-				E22F6FB521F1C37E00EA5A70 /* LaunchScreen.storyboard */,
+				E233AB8221F633230076F983 /* Controleur */,
+				E233AB8121F632890076F983 /* Modele */,
 				E22F6FB821F1C37E00EA5A70 /* Info.plist */,
-				E22F6FDE21F2059300EA5A70 /* DataBase.swift */,
-				E217372321F48F9100E17BA0 /* BanqueExercice.swift */,
-				E22F6FE021F2090600EA5A70 /* Entrainement.swift */,
-				E22F6FE221F20A8000EA5A70 /* Exercice.swift */,
 			);
 			path = IF26_projet;
 			sourceTree = "<group>";
@@ -263,6 +186,66 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E233AB7E21F631F90076F983 /* Exercices */ = {
+			isa = PBXGroup;
+			children = (
+				E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */,
+				E22F6FF421F358B400EA5A70 /* FirstViewControllerTableViewCell.swift */,
+				E22F6FEC21F316B400EA5A70 /* ExerciceTabViewController.swift */,
+				E22F6FF621F3B11900EA5A70 /* ExerciceDescriptionViewController.swift */,
+				E22F6FF221F3520500EA5A70 /* ExerciceTabViewControllerTableViewCell.swift */,
+				E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */,
+				E217371B21F3DE3A00E17BA0 /* ListExerciceViewController.swift */,
+			);
+			path = Exercices;
+			sourceTree = "<group>";
+		};
+		E233AB7F21F6321A0076F983 /* FriendsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				E22F6FAE21F1C37C00EA5A70 /* SecondViewController.swift */,
+				E28D42CA21F4F08C00082E0A /* FriendsCollectionViewCell.swift */,
+			);
+			path = FriendsSearch;
+			sourceTree = "<group>";
+		};
+		E233AB8021F6322C0076F983 /* Profil */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profil;
+			sourceTree = "<group>";
+		};
+		E233AB8121F632890076F983 /* Modele */ = {
+			isa = PBXGroup;
+			children = (
+				E22F6FDE21F2059300EA5A70 /* DataBase.swift */,
+				E217372321F48F9100E17BA0 /* BanqueExercice.swift */,
+				E22F6FE021F2090600EA5A70 /* Entrainement.swift */,
+				E22F6FE221F20A8000EA5A70 /* Exercice.swift */,
+			);
+			path = Modele;
+			sourceTree = "<group>";
+		};
+		E233AB8221F633230076F983 /* Controleur */ = {
+			isa = PBXGroup;
+			children = (
+				E233AB8021F6322C0076F983 /* Profil */,
+				E233AB7F21F6321A0076F983 /* FriendsSearch */,
+				E233AB7E21F631F90076F983 /* Exercices */,
+			);
+			path = Controleur;
+			sourceTree = "<group>";
+		};
+		E233AB8321F633520076F983 /* Vue */ = {
+			isa = PBXGroup;
+			children = (
+				E22F6FB021F1C37C00EA5A70 /* Main.storyboard */,
+				E22F6FB521F1C37E00EA5A70 /* LaunchScreen.storyboard */,
+			);
+			path = Vue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,30 +366,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E217373021F4AA8500E17BA0 /* Curl Biceps.jpg in Resources */,
-				E217372E21F4AA1E00E17BA0 /* Gainage.jpg in Resources */,
-				E28D42E621F50EC000082E0A /* Jeanne.jpg in Resources */,
-				E28D42E221F50EC000082E0A /* Julien.jpg in Resources */,
-				E28D42E021F50EC000082E0A /* Louis.jpg in Resources */,
-				E28D42E921F50FEC00082E0A /* Jean.jpg in Resources */,
-				E28D42E421F50EC000082E0A /* Tom.jpg in Resources */,
-				E28D42E721F50EC000082E0A /* Marc.jpg in Resources */,
-				E28D42D121F4F7F900082E0A /* Henri.jpg in Resources */,
-				E28D42CD21F4F7EF00082E0A /* Marc.jpg in Resources */,
-				E217372821F4A98900E17BA0 /* DC.jpg in Resources */,
 				E22F6FB721F1C37E00EA5A70 /* LaunchScreen.storyboard in Resources */,
-				E217372A21F4A9E000E17BA0 /* Butterfly.jpg in Resources */,
-				E28D42DF21F50EC000082E0A /* Damien.jpg in Resources */,
-				E217373221F4AAFE00E17BA0 /* Curls Legs.jpg in Resources */,
 				E22F6FB421F1C37E00EA5A70 /* Assets.xcassets in Resources */,
-				E28D42E121F50EC000082E0A /* Franck.jpg in Resources */,
 				E22F6FB221F1C37C00EA5A70 /* Main.storyboard in Resources */,
-				E217372121F3EA6800E17BA0 /* Pompes.jpg in Resources */,
-				E217372621F4A92F00E17BA0 /* Tractions.jpg in Resources */,
-				E28D42E521F50EC000082E0A /* Loic.jpg in Resources */,
-				E28D42E321F50EC000082E0A /* Moise.jpg in Resources */,
-				E28D42DE21F50EC000082E0A /* Henri.jpg in Resources */,
-				E217372C21F4AA0400E17BA0 /* Abdos.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
