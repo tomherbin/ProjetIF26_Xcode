@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+/**
+ Gestion du contenu des cellules du TableView
+ */
 class FirstViewControllerTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var titreEntrainement: UILabel!
     var idEntrainement : Int = 0;
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

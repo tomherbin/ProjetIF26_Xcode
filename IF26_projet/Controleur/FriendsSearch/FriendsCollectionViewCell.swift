@@ -7,14 +7,17 @@
 //
 
 import UIKit
-
+/**
+ Gestion des objets des cellules
+ */
 class FriendsCollectionViewCell: UICollectionViewCell {
    
     @IBOutlet weak var test: UILabel!
-    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var myImageView: UIImageView!
-    
+    /**
+    Affiche ajouté lorsqu'on appui sur le bouton
+     */
     @IBAction func addFriends(_ sender: Any) {
         
          addButton.setTitle( "ajouté" , for: .normal)

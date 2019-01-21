@@ -157,11 +157,11 @@
 		E22F6FA921F1C37C00EA5A70 /* IF26_projet */ = {
 			isa = PBXGroup;
 			children = (
-				E233AB8321F633520076F983 /* Vue */,
 				E22F6FAA21F1C37C00EA5A70 /* AppDelegate.swift */,
 				E22F6FB321F1C37E00EA5A70 /* Assets.xcassets */,
-				E233AB8221F633230076F983 /* Controleur */,
 				E233AB8121F632890076F983 /* Modele */,
+				E233AB8321F633520076F983 /* Vue */,
+				E233AB8221F633230076F983 /* Controleur */,
 				E22F6FB821F1C37E00EA5A70 /* Info.plist */,
 			);
 			path = IF26_projet;
@@ -194,8 +194,8 @@
 				E22F6FAC21F1C37C00EA5A70 /* FirstViewController.swift */,
 				E22F6FF421F358B400EA5A70 /* FirstViewControllerTableViewCell.swift */,
 				E22F6FEC21F316B400EA5A70 /* ExerciceTabViewController.swift */,
-				E22F6FF621F3B11900EA5A70 /* ExerciceDescriptionViewController.swift */,
 				E22F6FF221F3520500EA5A70 /* ExerciceTabViewControllerTableViewCell.swift */,
+				E22F6FF621F3B11900EA5A70 /* ExerciceDescriptionViewController.swift */,
 				E217371D21F3E19800E17BA0 /* ListExerciceViewControllerTableViewCell.swift */,
 				E217371B21F3DE3A00E17BA0 /* ListExerciceViewController.swift */,
 			);
@@ -209,13 +209,6 @@
 				E28D42CA21F4F08C00082E0A /* FriendsCollectionViewCell.swift */,
 			);
 			path = FriendsSearch;
-			sourceTree = "<group>";
-		};
-		E233AB8021F6322C0076F983 /* Profil */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profil;
 			sourceTree = "<group>";
 		};
 		E233AB8121F632890076F983 /* Modele */ = {
@@ -232,7 +225,6 @@
 		E233AB8221F633230076F983 /* Controleur */ = {
 			isa = PBXGroup;
 			children = (
-				E233AB8021F6322C0076F983 /* Profil */,
 				E233AB7F21F6321A0076F983 /* FriendsSearch */,
 				E233AB7E21F631F90076F983 /* Exercices */,
 			);

@@ -11,7 +11,10 @@ import SQLite
 import UIKit
 
 class DataBase {
-    
+    /**
+     Variable de connection à la base de donnée et description des tables
+     
+     */
     private static var dataBaseInstance: DataBase?
     private var database: Connection!
     
@@ -30,6 +33,9 @@ class DataBase {
     let programmeTable = Table("programme")
     let programmeExerciceId = Expression<Int>("idExoProg")
     
+    /**
+     Implantation du patron de conception Singleton pour n'avoir qu'une seule instance de base de donnée à la fois
+     */
     static func GetInstance()->DataBase{
         
         if(dataBaseInstance == nil){
@@ -39,7 +45,9 @@ class DataBase {
         return dataBaseInstance!
     }
     
-    
+    /**
+     Connection de la base de donnée
+     */
     private init() {
         
         do
@@ -59,7 +67,9 @@ class DataBase {
             print (error)
         }
         
-        
+        /**
+         Création des 3 tables : Entrainement, Exercice et programme
+         */
         let createTrainingTable = self.trainingTable.create(ifNotExists: true) { (table) in
             table.column(self.id, primaryKey: true)
             table.column(self.name)
@@ -95,7 +105,11 @@ class DataBase {
         
     }
     
-    
+    /**
+     Insérer un entrainement dans sa table
+     
+     Boite de dialogue permettant d'entrer son titre
+     */
     public func insertEntrainement(vc: FirstViewController){
         
         let alert = UIAlertController(title: "Nouvel entrainement", message: nil, preferredStyle: .alert)
@@ -128,7 +142,9 @@ class DataBase {
         
     }
     
-    //Chargement de la banque d'exercice
+    /**
+     Chargement de la banque d'exercice avec les données de la classe BanqueExercice
+     */
     public func insertExercice(exercice : [Exercice]){
         
         for exerciceEntry in exercice {
@@ -145,41 +161,11 @@ class DataBase {
         
         
     }
-    
-    //Boite de dialogue d'ajout d'exercice, plus utilisé
-    public func insertExercice(vc: ExerciceTabViewController){
-        
-        let alert = UIAlertController(title: "Nouvel exercice", message: nil, preferredStyle: .alert)
-        alert.addTextField { (tf) in tf.placeholder = "titre" }
-        alert.addTextField { (tf) in tf.placeholder = "description" }
-        
-        let action = UIAlertAction(title: "Valider", style: .default) { (_) in
-            guard let name = alert.textFields?.first?.text, let description = alert.textFields?.last?.text
-                else { return }
-            print(name)
-            print(description)
-            let insertExercice = self.exerciceTable.insert(self.nameExercice <- name, self.description <- description)
-            print (insertExercice)
-            do {
-                try self.database.run(insertExercice)
-                print("Exercice inséré !")
-                self.listExercice()
-                vc.tableView.reloadData()
-                vc.viewWillAppear(true)
-            } catch {
-                print(error)
-            }
-            
-        }
-        
-        let action2 = UIAlertAction(title: "Annuler", style: .default)
-        
-        alert.addAction(action2)
-        alert.addAction(action)
-        vc.present(alert, animated: true, completion: nil)
-        
-    }
-    
+    /**
+     Ajout des correspondance Exercice.Entrainement dans la table programme
+     @param clé d'entrainement
+     @param clé d'exercice
+     */
     public func addTrainingExercice(trainingKey : Int, exerciceKey : Int){
         
         let insertExercice = self.programmeTable.insert(self.id <- trainingKey, self.programmeExerciceId <- exerciceKey)
@@ -187,16 +173,15 @@ class DataBase {
         do {
             try self.database.run(insertExercice)
             print("Exercice ajouté à l'entrainement !")
-            //     vc.tableView.reloadData()
-            //    vc.viewWillAppear(true)
         } catch {
             print(error)
         }
         
     }
     
-    
-    
+    /**
+     Affichage de la liste des programmes dans la console
+     */
     public func listProgramme(){
         print("Affichage de la liste des programmes")
         
@@ -210,7 +195,9 @@ class DataBase {
         }
         
     }
-    
+    /**
+     Affichage de la liste des exercices dans la console
+     */
     
     public func listExercice(){
         print("Affichage de la liste des exercices")
@@ -226,7 +213,9 @@ class DataBase {
         
     }
     
-    
+    /**
+     Affichage de la liste des entrainements dans la console
+     */
     public func listTraining(){
         print("Affichage de la liste des entrainements")
         
@@ -240,122 +229,11 @@ class DataBase {
         }
         
     }
-    
-    public func getTrainingString() -> [String] {
-        
-        var trainingArray: [String] = []
-        
-        do {
-            
-            let training = try self.database.prepare(self.trainingTable)
-            for trainingEntry in training {
-                print("Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])")
-                
-                let trainingCell = "Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])"
-                trainingArray.append(trainingCell)
-            }
-        } catch {
-            print(error)
-        }
-        
-        return trainingArray
-        
-    }
-    
-    /*   public func getExerciceKey(name : String) -> [String] {
+    /**
+     Supprimer un entrainement
      
-     var ExerciceArray: [String] = []
-     do {
-     let Exercice = try self.database.prepare(self.ExerciceTable)
-     for trainingEntry in Exercice {
-     print("Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])")
-     
-     let trainingCell = "Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])"
-     trainingArray.append(trainingCell)
-     }
-     } catch {
-     print(error)
-     }
-     
-     return trainingArray
-     
-     }*/
-    
-    public func getTrainingTitle() -> [String] {
-        
-        var trainingArray: [String] = []
-        
-        do {
-            
-            let training = try self.database.prepare(self.trainingTable)
-            for trainingEntry in training {
-                print("\(trainingEntry[self.name])")
-                
-                let trainingCell = "\(trainingEntry[self.name])"
-                trainingArray.append(trainingCell)
-            }
-        } catch {
-            print(error)
-        }
-        
-        return trainingArray
-        
-    }
-    
-    public func getTrainingKey() -> [Int] {
-        var TrainingKeyArray: [Int] = []
-        
-        do {
-            
-            let training = try self.database.prepare(self.trainingTable)
-            for trainingEntry in training {
-                let trainingCell: Int = trainingEntry[self.id]
-                TrainingKeyArray.append(trainingCell)
-            }
-        } catch {
-            print(error)
-        }
-        return TrainingKeyArray
-    }
-    
-    public func  getExerciceDescription() -> [String]{
-        var DescriptionArray: [String] = []
-        
-        do {
-            
-            let description = try self.database.prepare(self.exerciceTable)
-            for descriptionEntry in description {
-                let descriptionCell: String = descriptionEntry[self.description]
-                DescriptionArray.append(descriptionCell)
-            }
-        } catch {
-            print(error)
-        }
-        return DescriptionArray
-    }
-    
-    
-    public func getTrainingExercice() -> [String]{
-        
-        var exerciceArray: [String] = []
-        
-        do {
-            
-            let training = try self.database.prepare(self.exerciceTable)
-            for exerciceEntry in training {
-                print("\(exerciceEntry[self.nameExercice])")
-                
-                let exerciceCell = "\(exerciceEntry[self.nameExercice])"
-                exerciceArray.append(exerciceCell)
-            }
-        } catch {
-            print(error)
-        }
-        
-        return exerciceArray
-    }
-    
-    
+     @param id de l'entrainement
+     */
     
     public func deleteTraining(trainingId : Int ) {
         
@@ -373,7 +251,11 @@ class DataBase {
         }
         
     }
-    
+    /**
+     Supprimer un exercice
+     
+     @param id de l'exercice
+     */
     
     public func deleteExercice(exerciceKey : Int ) {
         let exercice = self.exerciceTable.filter(self.idExercice == exerciceKey)
@@ -386,7 +268,11 @@ class DataBase {
         
     }
     
-    
+    /**
+     Supprimer les exercices d'un entrainement
+     
+     @param id de l'entrainement
+     */
     public func deleteProgramme(trainingKey : Int ) {
         let programme = self.programmeTable.filter(self.id == trainingKey)
         let deleteProgramme = programme.delete()
@@ -397,7 +283,12 @@ class DataBase {
         }
         
     }
-    
+    /**
+     Supprimer une entrée de l'entrainement
+     
+     @param id de l'entrainement
+     @param id de l'exo
+     */
     public func deleteProgramme(exerciceKey : Int, trainingKey : Int ) {
         let exercice = self.programmeTable.filter(self.programmeExerciceId == exerciceKey).filter(self.id == trainingKey)
         let deleteExercice = exercice.delete()
@@ -408,7 +299,9 @@ class DataBase {
         }
         
     }
-    
+    /**
+     Renvoie le tableau des exercices de la bdd
+     */
     
     public func getExercice() -> [Exercice]{
         var exerciceArray: [Exercice] = []
@@ -429,9 +322,12 @@ class DataBase {
         return exerciceArray
     }
     
-    /*Thread 1: Fatal error: 'try!' expression unexpectedly raised an error: Ambiguous column `"idExo"` (please disambiguate: ["\"exercice\".\"idExo\"", "\"programme\".\"idExo\""])*/
+    /**
+     Récupérer les exercices d'un entrainement avec une jointure
+     @param id de l'entrainement
+     @return tableau d'exercice
+     */
     
-    //Récupérer les exercices d'un entrainement avec une jointure
     public func getExerciceFromTraining(key: Int) -> [Exercice]{
         
         var exerciceArray: [Exercice] = []
@@ -449,8 +345,10 @@ class DataBase {
         return exerciceArray
     }
     
-    
-    
+    /**
+     Récupérer les entrainements
+     @return tableau d'entrainement
+     */
     
     public func getTraining() -> [Entrainement]{
         var trainingArray: [Entrainement] = []

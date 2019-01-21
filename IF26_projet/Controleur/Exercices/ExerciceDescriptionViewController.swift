@@ -7,23 +7,26 @@
 //
 
 import UIKit
-
+/**
+ Controleur de la description des exercices 
+ */
 class ExerciceDescriptionViewController: UIViewController {
 
-    var seconds = 60 //This variable will hold a starting value of seconds. It could be any amount above 0.
+    var seconds = 60
     var timer = Timer()
     var isTimerRunning = false
     var test = 0
-    
     @IBOutlet weak var timerButton: UIButton!
     @IBOutlet weak var imageExo: UIImageView!
     @IBOutlet weak var titreExo: UILabel!
     @IBOutlet weak var serie: UILabel!
     @IBOutlet weak var reps: UILabel!
-    
     @IBOutlet weak var descriptionExo: UITextView!
-  
-    
+    /**
+     Chargement de la vue
+     
+     On insère le contenu dans les objets de la vue
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
           imageExo?.image = UIImage(named: (exerciceArray[indexDescription].getTitle() + ".jpg"))
@@ -34,7 +37,9 @@ class ExerciceDescriptionViewController: UIViewController {
         timerButton.setTitle( "\(seconds)" , for: .normal)
         
     }
-    
+    /**
+     Lorsqu'on clique sur le bouton le timer se lance
+     */
     @IBAction func startTimerButton(_ sender: UIButton) {
         
         if(test == 0){
@@ -49,7 +54,9 @@ class ExerciceDescriptionViewController: UIViewController {
         }
         
     }
-    
+    /**
+     Fonctionnement du timer
+     */
     func runTimer() {
     timer = Timer.scheduledTimer(timeInterval: 1,
     target: self,
@@ -57,7 +64,9 @@ class ExerciceDescriptionViewController: UIViewController {
     userInfo: nil,
     repeats: true)
     }
-    
+    /**
+     Mise a jour du timer à chaque émission de fonctionnement
+     */
     @objc func updateTimer() {
         if(seconds > 0){
         seconds -= 1     //This will decrement(count down)the seconds.

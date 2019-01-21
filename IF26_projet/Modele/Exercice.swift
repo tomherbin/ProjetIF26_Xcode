@@ -7,7 +7,14 @@
 //
 
 import Foundation
-
+/**
+ Objet représentant un exercice
+ @titre
+ @reps
+ @serie
+ @exerciceKey
+ @description
+ */
 class Exercice{
     
     private var titre:String
@@ -15,9 +22,6 @@ class Exercice{
     private var serie:Int
     private var exerciceKey:Int
     private var description:String
-    
-    
-    
     
     init(exerciceKey:Int, reps:Int,serie:Int, titre:String, description:String){
         self.exerciceKey = exerciceKey

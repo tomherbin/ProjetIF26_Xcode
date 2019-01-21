@@ -8,13 +8,16 @@
 
 import Foundation
 
-
+/**
+ Objet représentant un entrainement
+ @titre
+ @key
+ */
 class Entrainement{
     
     private var titre:String
     private var key:Int
-    //private var array = [Exercice]()
-    
+
     init(titre:String, key:Int) {
         self.key = key
         self.titre = titre

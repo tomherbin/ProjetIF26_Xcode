@@ -7,9 +7,9 @@
 //
 
 import Foundation
-
-
-
+/**
+Classe de création et de chargement de la liste des exercices disponible dans l'application
+ */
 class BanqueExercice {
     
    private var exercice : [Exercice] = []
