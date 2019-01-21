@@ -56,11 +56,6 @@ class DataBase {
             let fileUrl = documentDirectory.appendingPathComponent("data_base").appendingPathExtension("sqlite3")
             let base = try Connection(fileUrl.path)
             self.database = base;
-            //Doesn't work ->Activation du mode cascade des clés étrangères
-            /*
-             let db = try Connection(fileUrl.path)
-             try db.execute("PRAGMA foreign_keys = ON;") // turns on foreign keys support for the db connection
-             */
         }
         catch
         {
@@ -90,7 +85,7 @@ class DataBase {
             table.foreignKey(self.id, references: trainingTable, self.id, delete:.cascade)
         }
         do {
-            /*print("Suppression des tables si changement de structure");
+          /*  print("Suppression des tables si changement de structure");
              try self.database.run(trainingTable.drop(ifExists : true))
              try self.database.run(exerciceTable.drop(ifExists : true))
              try self.database.run(programmeTable.drop(ifExists : true))*/
