@@ -40,6 +40,13 @@ class Exercice{
         return self.titre
     }
     
+    func getSerie() -> Int{
+        return self.serie
+    }
+    
+    func getRepetition() -> Int{
+        return self.reps
+    }
     
     func getDescription() -> String{
         return self.description

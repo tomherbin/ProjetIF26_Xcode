@@ -28,7 +28,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
-        print(trainingArray[indexPath.item].getTitle())
         cell.titreEntrainement?.text = trainingArray[indexPath.item].getTitle()
         return(cell)
     }

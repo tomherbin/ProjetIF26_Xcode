@@ -13,7 +13,9 @@ class ExerciceTabViewControllerTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageExo: UIImageView!
     @IBOutlet weak var titleExo: UILabel!
-    @IBOutlet weak var descriptionExo: UILabel!
+    @IBOutlet weak var serieExo: UILabel!
+    @IBOutlet weak var repetitionExo: UILabel!
+    
     
     
     override func awakeFromNib() {

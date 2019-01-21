@@ -14,10 +14,7 @@ var indexDescription = 0
 
 class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
   
-  
-    
     @IBOutlet weak var editButton: UIBarButtonItem!
-   // var myIndex = 0
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,7 +24,8 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ExerciceTabViewControllerTableViewCell
       cell.titleExo?.text = exerciceArray[indexPath.item].getTitle()
-        cell.descriptionExo?.text = exerciceArray[indexPath.item].getDescription()
+        cell.serieExo?.text = String(exerciceArray[indexPath.item].getSerie())
+        cell.repetitionExo?.text = String(exerciceArray[indexPath.item].getRepetition())
         cell.imageExo?.image = UIImage(named: (exerciceArray[indexPath.item].getTitle() + ".jpg"))
         
         return(cell)
@@ -47,14 +45,6 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func rearrange(_ sender: UIBarButtonItem) {
         tableView.isEditing = !tableView.isEditing
-        //doesn't work
-        switch tableView.isEditing {
-        case true:
-            editButton.title = "done"
-        case false:
-            editButton.title = "edit"
-    }
-   
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -70,7 +60,6 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func addExercice(_ sender: Any) {
         DataBase.GetInstance().insertExercice(vc: self)
-      //  DataBase.GetInstance().insertExercice(vc: self)
     }
     
     
@@ -83,7 +72,6 @@ class ExerciceTabViewController: UIViewController, UITableViewDelegate, UITableV
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         exerciceArray = DataBase.GetInstance().getExerciceFromTraining(key: myIndex)
-        print(exerciceArray)
         self.tableView.reloadData()
     }
     

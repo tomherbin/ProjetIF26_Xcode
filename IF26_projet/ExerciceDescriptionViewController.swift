@@ -18,6 +18,8 @@ class ExerciceDescriptionViewController: UIViewController {
     @IBOutlet weak var timerButton: UIButton!
     @IBOutlet weak var imageExo: UIImageView!
     @IBOutlet weak var titreExo: UILabel!
+    @IBOutlet weak var serie: UILabel!
+    @IBOutlet weak var reps: UILabel!
     
     @IBOutlet weak var descriptionExo: UITextView!
   
@@ -27,6 +29,8 @@ class ExerciceDescriptionViewController: UIViewController {
           imageExo?.image = UIImage(named: (exerciceArray[indexDescription].getTitle() + ".jpg"))
         titreExo?.text = exerciceArray[indexDescription].getTitle()
         descriptionExo?.text = exerciceArray[indexDescription].getDescription()
+        serie?.text = String(exerciceArray[indexDescription].getSerie())
+        reps?.text = String(exerciceArray[indexDescription].getRepetition())
         timerButton.setTitle( "\(seconds)" , for: .normal)
         
     }

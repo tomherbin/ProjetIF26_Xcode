@@ -24,8 +24,10 @@ class DataBase {
     let idExercice = Expression<Int>("idExo")
     let nameExercice = Expression<String>("titre")
     let description = Expression<String>("description")
+    let reps = Expression<Int>("reps")
+    let serie = Expression<Int>("serie")
     
-     let programmeTable = Table("programme")
+    let programmeTable = Table("programme")
     let programmeExerciceId = Expression<Int>("idExoProg")
     
     static func GetInstance()->DataBase{
@@ -46,6 +48,11 @@ class DataBase {
             let fileUrl = documentDirectory.appendingPathComponent("data_base").appendingPathExtension("sqlite3")
             let base = try Connection(fileUrl.path)
             self.database = base;
+            //Doesn't work ->Activation du mode cascade des clés étrangères
+            /*
+             let db = try Connection(fileUrl.path)
+             try db.execute("PRAGMA foreign_keys = ON;") // turns on foreign keys support for the db connection
+             */
         }
         catch
         {
@@ -53,24 +60,28 @@ class DataBase {
         }
         
         
-        let createTrainingTable = self.trainingTable.create { (table) in
+        let createTrainingTable = self.trainingTable.create(ifNotExists: true) { (table) in
             table.column(self.id, primaryKey: true)
             table.column(self.name)
             
         }
-        let createExerciceTable = self.exerciceTable.create { (table) in
+        let createExerciceTable = self.exerciceTable.create(ifNotExists: true) { (table) in
             table.column(self.idExercice, primaryKey: true)
             table.column(self.nameExercice)
             table.column(self.description)
+            table.column(self.reps)
+            table.column(self.serie)
         }
-        let createProgrammeTable = self.programmeTable.create { (table) in
+        let createProgrammeTable = self.programmeTable.create(ifNotExists: true) { (table) in
             table.column(self.id)
             table.column(self.programmeExerciceId)
             
             table.primaryKey(self.id, self.programmeExerciceId)
-            table.foreignKey(self.programmeExerciceId, references: exerciceTable, self.idExercice)
-            table.foreignKey(self.id, references: trainingTable, self.id)
+            table.foreignKey(self.programmeExerciceId, references: exerciceTable, self.idExercice, delete:.cascade)
+            table.foreignKey(self.id, references: trainingTable, self.id, delete:.cascade)
         }
+        
+        
         
         do {
             /*print("Suppression des tables si changement de structure");
@@ -85,7 +96,7 @@ class DataBase {
         } catch {
             print(error)
         }
-    
+        
     }
     
     
@@ -125,7 +136,7 @@ class DataBase {
     public func insertExercice(exercice : [Exercice]){
         
         for exerciceEntry in exercice {
-            let insertExercice = self.exerciceTable.insert(self.nameExercice <- exerciceEntry.getTitle(), self.description <- exerciceEntry.getDescription(), self.idExercice <- exerciceEntry.getKey())
+            let insertExercice = self.exerciceTable.insert(self.nameExercice <- exerciceEntry.getTitle(), self.description <- exerciceEntry.getDescription(), self.idExercice <- exerciceEntry.getKey(), self.reps <- exerciceEntry.getRepetition(), self.serie <- exerciceEntry.getSerie())
             print (insertExercice)
             do {
                 try self.database.run(insertExercice)
@@ -176,18 +187,18 @@ class DataBase {
     public func addTrainingExercice(trainingKey : Int, exerciceKey : Int){
         
         let insertExercice = self.programmeTable.insert(self.id <- trainingKey, self.programmeExerciceId <- exerciceKey)
-            print (insertExercice)
-            do {
-                try self.database.run(insertExercice)
-                print("Exercice ajouté à l'entrainement !")
-           //     vc.tableView.reloadData()
+        print (insertExercice)
+        do {
+            try self.database.run(insertExercice)
+            print("Exercice ajouté à l'entrainement !")
+            //     vc.tableView.reloadData()
             //    vc.viewWillAppear(true)
-            } catch {
-                print(error)
-            }
-            
+        } catch {
+            print(error)
         }
         
+    }
+    
     
     
     public func listProgramme(){
@@ -219,7 +230,7 @@ class DataBase {
         
     }
     
-   
+    
     public func listTraining(){
         print("Affichage de la liste des entrainements")
         
@@ -255,24 +266,24 @@ class DataBase {
         
     }
     
- /*   public func getExerciceKey(name : String) -> [String] {
-        
-        var ExerciceArray: [String] = []
-        do {
-            let Exercice = try self.database.prepare(self.ExerciceTable)
-            for trainingEntry in Exercice {
-                print("Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])")
-                
-                let trainingCell = "Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])"
-                trainingArray.append(trainingCell)
-            }
-        } catch {
-            print(error)
-        }
-        
-        return trainingArray
-        
-    }*/
+    /*   public func getExerciceKey(name : String) -> [String] {
+     
+     var ExerciceArray: [String] = []
+     do {
+     let Exercice = try self.database.prepare(self.ExerciceTable)
+     for trainingEntry in Exercice {
+     print("Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])")
+     
+     let trainingCell = "Id: \(trainingEntry[self.id]), name: \(trainingEntry[self.name]), idExo: \(trainingEntry[self.idExercice])"
+     trainingArray.append(trainingCell)
+     }
+     } catch {
+     print(error)
+     }
+     
+     return trainingArray
+     
+     }*/
     
     public func getTrainingTitle() -> [String] {
         
@@ -351,11 +362,16 @@ class DataBase {
     
     
     public func deleteTraining(trainingId : Int ) {
-
+        
         let training = self.trainingTable.filter(self.id == trainingId)
+        self.deleteProgramme(trainingKey: trainingId)
+   
+      
         let deleteTraining = training.delete()
+
         do {
             try self.database.run(deleteTraining)
+            
         } catch {
             print(error)
         }
@@ -374,6 +390,17 @@ class DataBase {
         
     }
     
+    
+    public func deleteProgramme(trainingKey : Int ) {
+        let programme = self.programmeTable.filter(self.id == trainingKey)
+        let deleteProgramme = programme.delete()
+        do {
+            try self.database.run(deleteProgramme)
+        } catch {
+            print(error)
+        }
+        
+    }
     
     public func deleteProgramme(exerciceKey : Int, trainingKey : Int ) {
         let exercice = self.programmeTable.filter(self.programmeExerciceId == exerciceKey).filter(self.id == trainingKey)
@@ -410,23 +437,21 @@ class DataBase {
     
     //Récupérer les exercices d'un entrainement avec une jointure
     public func getExerciceFromTraining(key: Int) -> [Exercice]{
-            
-            var exerciceArray: [Exercice] = []
-            let selectExercice = programmeTable.join(exerciceTable, on: id == key && programmeExerciceId == idExercice)
-        print("----")
-        print(selectExercice)
-            do {
-                for exerciceEntry in  try database.prepare(selectExercice) {
-                    
-                    let exerciceLigne = Exercice(exerciceKey: exerciceEntry[idExercice], titre: exerciceEntry[name], description: exerciceEntry[description])
-                    
-                    exerciceArray.append(exerciceLigne)
-                }
-            }catch {
-                print(error)
+        
+        var exerciceArray: [Exercice] = []
+        let selectExercice = programmeTable.join(exerciceTable, on: id == key && programmeExerciceId == idExercice)
+        do {
+            for exerciceEntry in  try database.prepare(selectExercice) {
+                
+                let exerciceLigne = Exercice(exerciceKey: exerciceEntry[idExercice],reps: exerciceEntry[reps], serie: exerciceEntry[serie], titre: exerciceEntry[name], description: exerciceEntry[description])
+                
+                exerciceArray.append(exerciceLigne)
             }
-            return exerciceArray
+        }catch {
+            print(error)
         }
+        return exerciceArray
+    }
     
     
     
@@ -438,8 +463,6 @@ class DataBase {
             let training = try self.database.prepare(self.trainingTable)
             for trainingEntry in training {
                 let trainingLigne = Entrainement(titre: trainingEntry[name], key: trainingEntry[id])
-                
-                print(trainingLigne)
                 trainingArray.append(trainingLigne)
             }
         }
